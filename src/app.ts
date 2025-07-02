@@ -2,12 +2,12 @@ import express, {Request, Response, NextFunction} from "express"
 import dotenv from "dotenv"
 dotenv.config();
 
-import swaggerUi from "swagger-ui-express";
-import swaggerDocument from "./docs/swagger.json";
+// import swaggerUi from "swagger-ui-express";
+// import swaggerDocument from "./docs/swagger.json";
 
 import { AppDataSource } from "./data-source";
 
-import routers from "./routers"
+import routers from "./routers/";
 
 AppDataSource.initialize() 
     .then(() => {
@@ -22,7 +22,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/v1", routers);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.send("Hello me, it's me again...");

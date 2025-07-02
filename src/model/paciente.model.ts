@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-class Patient {
+class Paciente {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -17,4 +17,4 @@ class Patient {
     }
 }
 
-export default Patient;
+export default Paciente;

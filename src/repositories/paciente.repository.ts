@@ -3,15 +3,15 @@ import paciente from "../model/paciente.model";
 
 const repository = AppDataSource.getRepository(paciente);
 
-async function getpaciente(id: number) : Promise<paciente | null> {
+async function getPaciente(id: number) : Promise<paciente | null> {
     return await repository.findOneBy({"id": id});
 }
 
-async function getpacientes() : Promise<paciente[]> {
+async function getPacientes() : Promise<paciente[]> {
     return await repository.find();
 }
 
-async function addpaciente(data: paciente) : Promise<paciente> {
+async function addPaciente(data: paciente) : Promise<paciente> {
     const paciente = repository.create({
         name: data.name,
         code: data.code
@@ -20,8 +20,8 @@ async function addpaciente(data: paciente) : Promise<paciente> {
     return await repository.save(paciente);
 }
 
-async function updatepaciente(id: number, data: paciente) : Promise<paciente | null> {
-    const paciente = await getpaciente(id);
+async function updatePaciente(id: number, data: paciente) : Promise<paciente | null> {
+    const paciente = await getPaciente(id);
 
     if (paciente !== null){
         paciente.name = data.name;
@@ -33,7 +33,7 @@ async function updatepaciente(id: number, data: paciente) : Promise<paciente | n
     return null;
 }
 
-async function deletepaciente(id: number) : Promise<boolean> {
+async function deletePaciente(id: number) : Promise<boolean> {
     const result = await repository.delete({"id": id});
 
     if (result.affected != null && result.affected != undefined) {
@@ -44,9 +44,9 @@ async function deletepaciente(id: number) : Promise<boolean> {
 }
 
 export default {
-    getpaciente,
-    getpacientes,
-    addpaciente,
-    updatepaciente,
-    deletepaciente,
+    getPaciente,
+    getPacientes,
+    addPaciente,
+    updatePaciente,
+    deletePaciente,
 }

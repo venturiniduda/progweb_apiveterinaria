@@ -3,8 +3,8 @@ import swaggerAutogen from "swagger-autogen";
 const config = {
     info: {
         version: 'v1.0.0',
-        title: 'Fatecare API',
-        description: 'Fatecare API documentation'
+        title: 'Clínica Veterinária Francisco - CRUD',
+        description: 'Clínica Veterinária Francisco - API documentation'
     },
     host: `localhost:${process.env.PORT || 3000}`,
     basePath: '/api/v1',

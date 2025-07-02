@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Projeto de API para matéria de Laboratório de Programação WEB - Clínica Veterinária - CRUD",
   "main": "index.js",
-   "scripts": {
+  "scripts": {
     "dev": "npx nodemon src/app.ts --watch 'src/' -e ts",
     "swagger": "ts-node src/swagger.ts"
   },
@@ -16,7 +16,9 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "dotenv": "^17.0.1",
     "express": "^5.1.0",
-    "swagger": "^0.7.5"
+    "swagger": "^0.7.5",
+    "typeorm": "^0.3.25"
   }
 }

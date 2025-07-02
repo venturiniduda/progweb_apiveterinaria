@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Projeto de API para matéria de Laboratório de Programação WEB - Clínica Veterinária - CRUD",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+   "scripts": {
+    "dev": "npx nodemon src/app.ts --watch 'src/' -e ts",
+    "swagger": "ts-node src/swagger.ts"
   },
   "keywords": [],
   "author": "",

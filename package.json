@@ -16,9 +16,12 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "dotenv": "^17.0.1",
+    "dotenv": "^16.6.1",
     "express": "^5.1.0",
-    "swagger": "^0.7.5",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "swagger": "^0.0.1",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1",
     "typeorm": "^0.3.25"

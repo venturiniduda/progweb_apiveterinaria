@@ -1,8 +1,8 @@
 import express from "express"
-import PatientRouter from "./paciente.router"
+import PacienteRouter from "./paciente.router"
 
 const router = express.Router();
 
-router.get("/patients", PatientRouter);
+router.get("/patients", PacienteRouter);
 
 export default router;

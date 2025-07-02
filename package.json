@@ -1,0 +1,21 @@
+{
+  "name": "progweb_apiveterinaria",
+  "version": "1.0.0",
+  "description": "Projeto de API para matéria de Laboratório de Programação WEB - Clínica Veterinária - CRUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "swagger": "^0.7.5"
+  }
+}

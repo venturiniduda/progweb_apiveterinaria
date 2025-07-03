@@ -1,24 +1,28 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne } from "typeorm";
+import Tutor from "./tutor.model";
 
 @Entity()
 class Paciente {
     @PrimaryGeneratedColumn()
-    vet_id: number;
+    animal_id: number;
+
+    @ManyToOne(() => Tutor, tutor => tutor.Paciente)
+    tutor: Tutor;
 
     @Column()
     nome: string;
 
     @Column()
-    sobrenome: string;
+    sexo: string;
 
     @Column()
-    crmv: string;
+    raca: string;
 
     @Column()
-    telefone: string;
+    cor_pelagem: string;
 
     @Column()
-    email: string;
+    data_nascimento: string;
 
     @CreateDateColumn({ type: "timestamp" })
       criado_em: Date;

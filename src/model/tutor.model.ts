@@ -41,6 +41,7 @@ class Tutor {
 
   @CreateDateColumn({ type: "timestamp" })
   criado_em: Date;
+  Paciente: any;
 
 }
 

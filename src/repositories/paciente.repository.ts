@@ -4,7 +4,7 @@ import paciente from "../model/paciente.model";
 const repository = AppDataSource.getRepository(paciente);
 
 async function getPaciente(id: number) : Promise<paciente | null> {
-    return await repository.findOneBy({"vet_id": id});
+    return await repository.findOneBy({"animal_id": id});
 }
 
 async function getPacientes() : Promise<paciente[]> {
@@ -14,11 +14,11 @@ async function getPacientes() : Promise<paciente[]> {
 async function addPaciente(data: paciente) : Promise<paciente> {
     const paciente = repository.create({
         nome: data.nome,
-        sobrenome: data.sobrenome,
-        crmv: data.crmv,
-        telefone: data.telefone,
-        email: data.email,
-        criado_em: data.criado_em
+        sexo: data.sexo,
+        raca: data.raca,
+        cor_pelagem: data.cor_pelagem,
+        data_nascimento: data.data_nascimento,
+        //criado_em será criado automaticamente
     });
     
     return await repository.save(paciente);
@@ -29,10 +29,10 @@ async function updatePaciente(id: number, data: paciente) : Promise<paciente | n
 
     if (paciente !== null){
         paciente.nome = data.nome;
-        paciente.sobrenome = data.sobrenome;
-        paciente.crmv = data.crmv;
-        paciente.telefone = data.telefone;
-        paciente.email = data.email;
+        paciente.sexo = data.sexo;
+        paciente.raca = data.raca;
+        paciente.cor_pelagem = data.cor_pelagem;
+        paciente.data_nascimento = data.data_nascimento;
         paciente.criado_em = data.criado_em;
 
         return await repository.save(paciente);
@@ -42,7 +42,7 @@ async function updatePaciente(id: number, data: paciente) : Promise<paciente | n
 }
 
 async function deletePaciente(id: number) : Promise<boolean> {
-    const result = await repository.delete({"vet_id": id});
+    const result = await repository.delete({"animal_id": id});
 
     if (result.affected != null && result.affected != undefined) {
         return true;

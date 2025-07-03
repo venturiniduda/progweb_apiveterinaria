@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm";
 
 @Entity()
 class Paciente {
@@ -20,8 +20,8 @@ class Paciente {
     @Column()
     email: string;
 
-    @Column()
-    criado_em: Date;
+    @CreateDateColumn({ type: "timestamp" })
+      criado_em: Date;
 }
 
 export default Paciente;

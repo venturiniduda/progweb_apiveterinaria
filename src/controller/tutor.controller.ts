@@ -13,7 +13,7 @@ async function getTutor(req: Request, res: Response, next: NextFunction) {
 }
 
 async function getTutores(req: Request, res: Response, next: NextFunction) {
-    const Tutors = await TutorRepository.getTutors();
+    const Tutors = await TutorRepository.getTutores();
 
     res.status(200).json(Tutors);
 }

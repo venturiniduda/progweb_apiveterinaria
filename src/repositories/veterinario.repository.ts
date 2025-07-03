@@ -4,7 +4,7 @@ import Veterinario from "../model/veterinario.model";
 const repository = AppDataSource.getRepository(Veterinario);
 
 async function getVeterinario(id: number) : Promise<Veterinario | null> {
-    return await repository.findOneBy({"vet_id": id});
+    return await repository.findOneBy({ vet_id : id});
 }
 
 async function getVeterinarios() : Promise<Veterinario[]> {
@@ -42,7 +42,7 @@ async function updateVeterinario(id: number, data: Veterinario) : Promise<Veteri
 }
 
 async function deleteVeterinario(id: number) : Promise<boolean> {
-    const result = await repository.delete({"vet_id": id});
+    const result = await repository.delete({ vet_id : id});
 
     if (result.affected != null && result.affected != undefined) {
         return true;

@@ -12,16 +12,16 @@ export class Paciente {
   @Column()
   tutor_id: number;
 
-  @Column()
+  @Column({ length: 60 })
   nome: string;
 
-  @Column()
+  @Column({ length: 1 })
   sexo: string;
 
-  @Column()
+  @Column({ length: 60 })
   raca: string;
 
-  @Column()
+  @Column({ length: 60 })
   cor_pelagem: string;
 
   @Column()

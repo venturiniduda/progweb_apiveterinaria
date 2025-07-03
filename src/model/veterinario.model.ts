@@ -5,19 +5,19 @@ class Veterinario {
     @PrimaryGeneratedColumn()
     vet_id: number;
 
-    @Column()
+    @Column({ length: 60 })
     nome: string;
 
-    @Column()
+    @Column({ length: 60 })
     sobrenome: string;
 
-    @Column()
+    @Column({ length: 14 })
     crmv: string;
 
-    @Column()
+    @Column({ length: 11})
     telefone: string;
 
-    @Column()
+    @Column({ length: 30})
     email: string;
 
     @CreateDateColumn({ type: "timestamp" })

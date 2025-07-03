@@ -7,37 +7,37 @@ class Tutor {
   @PrimaryGeneratedColumn()
   tutor_id: number;
 
-  @Column()
+  @Column({ length: 60 })
   nome: string;
 
-  @Column()
+  @Column({ length: 60 })
   sobrenome: string;
 
-  @Column()
+  @Column({ length: 11 })
   cpf: string;
 
   @Column()
   data_nascimento: Date;
 
-  @Column()
+  @Column({ length: 60})
   rua: string;
 
   @Column()
   numero: number;
 
-  @Column()
+  @Column({ length: 30 })
   bairro: string;
 
-  @Column()
+  @Column({ length: 30 })
   cidade: string;
 
-  @Column()
+  @Column({ length: 30 })
   complemento: string;
 
-  @Column()
+  @Column({ length: 30 })
   email: string;
 
-  @Column()
+  @Column({ length: 11 })
   telefone: string;
 
   @CreateDateColumn({ type: "timestamp" })

@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn } from "typeorm";
+import Paciente from './paciente.model';
 
 @Entity()
 class Tutor {
@@ -43,6 +44,8 @@ class Tutor {
   criado_em: Date;
   Paciente: any;
 
+  @OneToMany(() => Paciente, (paciente) => paciente.tutor)
+  pacientes: Paciente[];
 }
 
 export default Tutor;

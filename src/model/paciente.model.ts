@@ -3,18 +3,25 @@ import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 class Paciente {
     @PrimaryGeneratedColumn()
-    id: number;
+    vet_id: number;
 
     @Column()
-    code: string;
+    nome: string;
 
     @Column()
-    name: string;
+    sobrenome: string;
 
-    constructor(code: string, name: string) {
-        this.code = code;
-        this.name = name;
-    }
+    @Column()
+    crmv: string;
+
+    @Column()
+    telefone: string;
+
+    @Column()
+    email: string;
+
+    @Column()
+    criado_em: Date;
 }
 
 export default Paciente;

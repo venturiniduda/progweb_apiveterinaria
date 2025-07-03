@@ -13,8 +13,12 @@ async function getPacientes() : Promise<paciente[]> {
 
 async function addPaciente(data: paciente) : Promise<paciente> {
     const paciente = repository.create({
-        name: data.name,
-        code: data.code
+        nome: data.nome,
+        sobrenome: data.sobrenome,
+        crmv: data.crmv,
+        telefone: data.telefone,
+        email: data.email,
+        criado_em: data.criado_em
     });
     
     return await repository.save(paciente);
@@ -24,8 +28,12 @@ async function updatePaciente(id: number, data: paciente) : Promise<paciente | n
     const paciente = await getPaciente(id);
 
     if (paciente !== null){
-        paciente.name = data.name;
-        paciente.code = data.code;
+        paciente.nome = data.nome;
+        paciente.sobrenome = data.sobrenome;
+        paciente.crmv = data.crmv;
+        paciente.telefone = data.telefone;
+        paciente.email = data.email;
+        paciente.criado_em = data.criado_em;
 
         return await repository.save(paciente);
     }

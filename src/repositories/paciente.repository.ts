@@ -4,7 +4,7 @@ import paciente from "../model/paciente.model";
 const repository = AppDataSource.getRepository(paciente);
 
 async function getPaciente(id: number) : Promise<paciente | null> {
-    return await repository.findOneBy({"id": id});
+    return await repository.findOneBy({"vet_id": id});
 }
 
 async function getPacientes() : Promise<paciente[]> {
@@ -42,7 +42,7 @@ async function updatePaciente(id: number, data: paciente) : Promise<paciente | n
 }
 
 async function deletePaciente(id: number) : Promise<boolean> {
-    const result = await repository.delete({"id": id});
+    const result = await repository.delete({"vet_id": id});
 
     if (result.affected != null && result.affected != undefined) {
         return true;

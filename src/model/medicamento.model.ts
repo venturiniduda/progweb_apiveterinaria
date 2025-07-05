@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from 'typeorm';
+import Estoque from './estoque.model';
 
 export class Medicamento {
   @PrimaryGeneratedColumn()
@@ -36,6 +37,10 @@ export class Medicamento {
 
   @CreateDateColumn({ type: "timestamp" })
     criado_em: Date;
+
+  @ManyToOne(() => Estoque, (estoque) => estoque.medicamento)
+  medicamentos: Medicamento[];
+  Estoque: any;
 }
 
 export default Medicamento;

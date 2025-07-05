@@ -28,7 +28,7 @@ export class Paciente {
   data_nascimento: Date;
 
   @CreateDateColumn({ type: "timestamp" })
-    criado_em: Date;
+  criado_em: Date;
 }
 
 export default Paciente;

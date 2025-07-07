@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from 'typeorm';
 import Tutor from './tutor.model';
 
+@Entity()
 export class Paciente {
   @PrimaryGeneratedColumn()
   animal_id: number;

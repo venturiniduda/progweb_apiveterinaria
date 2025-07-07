@@ -42,7 +42,6 @@ class Tutor {
 
   @CreateDateColumn({ type: "timestamp" })
   criado_em: Date;
-  Paciente: any;
 
   @OneToMany(() => Paciente, (paciente) => paciente.tutor)
   pacientes: Paciente[];

@@ -5,7 +5,7 @@ export class Paciente {
   @PrimaryGeneratedColumn()
   animal_id: number;
 
-  @ManyToOne(() => Tutor, (tutor) => tutor.Paciente, { nullable: false })
+  @ManyToOne(() => Tutor, (tutor) => tutor.pacientes, { nullable: false })
   @JoinColumn({ name: 'tutor_id' })
   tutor: Tutor;
 

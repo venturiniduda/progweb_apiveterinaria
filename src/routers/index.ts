@@ -5,6 +5,7 @@ import AdminRouter from "./admin.router"
 import VeterinarioRouter from "./veterinario.router"
 import MedicamentoRouter from "./medicamento.router"
 import EstoqueRouter from "./estoque.router"
+import UserRouter from "./user.router"
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.get("/admin", AdminRouter);
 router.get("/veterinario", VeterinarioRouter);
 router.get("/medicamento", MedicamentoRouter);
 router.get("/estoque", EstoqueRouter);
+router.get("/users", UserRouter);
 
 export default router;

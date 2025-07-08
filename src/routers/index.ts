@@ -6,16 +6,27 @@ import VeterinarioRouter from "./veterinario.router"
 import MedicamentoRouter from "./medicamento.router"
 import EstoqueRouter from "./estoque.router"
 import UserRouter from "./user.router"
-import { apiKeyAuthMiddleware } from "../middlewares/auth.middleware";
+import { apiKeyAuthMiddleware, jwtAuthMiddleware } from "../middlewares/auth.middleware";
+import loginController from "../controller/login.controller";
 
 const router = express.Router();
 
-router.get("/paciente", apiKeyAuthMiddleware, PacienteRouter);
-router.get("/tutor", apiKeyAuthMiddleware, TutorRouter);
-router.get("/admin", apiKeyAuthMiddleware, AdminRouter);
-router.get("/veterinario", apiKeyAuthMiddleware, VeterinarioRouter);
-router.get("/medicamento", apiKeyAuthMiddleware, MedicamentoRouter);
-router.get("/estoque", apiKeyAuthMiddleware, EstoqueRouter);
+// router.post('/login', loginController.login);
+// router.get("/paciente", jwtAuthMiddleware, apiKeyAuthMiddleware, PacienteRouter);
+// router.get("/tutor", jwtAuthMiddleware, apiKeyAuthMiddleware, TutorRouter);
+// router.get("/admin", jwtAuthMiddleware, apiKeyAuthMiddleware, AdminRouter);
+// router.get("/veterinario", jwtAuthMiddleware, apiKeyAuthMiddleware, VeterinarioRouter);
+// router.get("/medicamento", jwtAuthMiddleware, apiKeyAuthMiddleware, MedicamentoRouter);
+// router.get("/estoque", jwtAuthMiddleware, apiKeyAuthMiddleware, EstoqueRouter);
+// router.get("/users", UserRouter);
+
+router.post('/login', loginController.login);
+router.get("/paciente", jwtAuthMiddleware, PacienteRouter);
+router.get("/tutor", jwtAuthMiddleware, TutorRouter);
+router.get("/admin", jwtAuthMiddleware, AdminRouter);
+router.get("/veterinario", jwtAuthMiddleware, VeterinarioRouter);
+router.get("/medicamento", jwtAuthMiddleware, MedicamentoRouter);
+router.get("/estoque", jwtAuthMiddleware, EstoqueRouter);
 router.get("/users", UserRouter);
 
 export default router;

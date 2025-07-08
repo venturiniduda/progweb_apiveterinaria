@@ -11,6 +11,7 @@ import loginController from "../controller/login.controller";
 
 const router = express.Router();
 
+// comentando para escolhermos depois qual implementação de auth usar:
 // router.post('/login', loginController.login);
 // router.get("/paciente", jwtAuthMiddleware, apiKeyAuthMiddleware, PacienteRouter);
 // router.get("/tutor", jwtAuthMiddleware, apiKeyAuthMiddleware, TutorRouter);
@@ -20,6 +21,7 @@ const router = express.Router();
 // router.get("/estoque", jwtAuthMiddleware, apiKeyAuthMiddleware, EstoqueRouter);
 // router.get("/users", UserRouter);
 
+// essa é mais usada no dia a dia no mercado de trabalho:
 router.post('/login', loginController.login);
 router.get("/paciente", jwtAuthMiddleware, PacienteRouter);
 router.get("/tutor", jwtAuthMiddleware, TutorRouter);

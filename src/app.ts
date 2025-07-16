@@ -24,7 +24,7 @@ app.use(express.json());
 app.use("/api/v1", routers);
 // app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use((res: Response) => {
+app.use((req, res: Response) => {
     res.send("Hello me, it's me again...");
 });
 

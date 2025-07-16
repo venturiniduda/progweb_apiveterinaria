@@ -5,20 +5,30 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon src/app.ts --watch 'src/' -e ts",
-    "swagger": "ts-node src/swagger.ts"
+    "swagger": "ts-node src/swagger.ts",
+    "lint": "eslint . --ext .ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/css": "^0.10.0",
+    "@eslint/js": "^9.31.0",
+    "@eslint/json": "^0.13.0",
+    "@eslint/markdown": "^7.0.0",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.0.10",
     "@types/swagger-ui-express": "^4.1.8",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
     "bcrypt": "^6.0.0",
+    "eslint": "^9.31.0",
+    "globals": "^16.3.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.37.0"
   },
   "dependencies": {
     "dotenv": "^16.6.1",

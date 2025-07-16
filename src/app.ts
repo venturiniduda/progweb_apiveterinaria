@@ -1,4 +1,4 @@
-import express, {Request, Response, NextFunction} from "express"
+import express, {Response} from "express"
 import dotenv from "dotenv"
 dotenv.config();
 
@@ -24,7 +24,7 @@ app.use(express.json());
 app.use("/api/v1", routers);
 // app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((res: Response) => {
     res.send("Hello me, it's me again...");
 });
 

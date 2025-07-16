@@ -1,8 +1,8 @@
 import Veterinario from "../model/veterinario.model";
 import VeterinarioRepository from "../repositories/veterinario.repository";
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 
-async function getVeterinario(req: Request, res: Response, next: NextFunction) {
+async function getVeterinario(req: Request, res: Response) {
     const id = Number(req.params.id);
     const Veterinario = await VeterinarioRepository.getVeterinario(id);
 
@@ -12,20 +12,20 @@ async function getVeterinario(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function getVeterinarios(req: Request, res: Response, next: NextFunction) {
+async function getVeterinarios(res: Response) {
     const Veterinarios = await VeterinarioRepository.getVeterinarios();
 
     res.status(200).json(Veterinarios);
 }
 
-async function addVeterinario(req: Request, res: Response, next: NextFunction) {
+async function addVeterinario(req: Request, res: Response) {
     const data = req.body as Veterinario;
     const Veterinario = await VeterinarioRepository.addVeterinario(data);
 
     res.status(201).json(Veterinario);
 }
 
-async function updateVeterinario(req: Request, res: Response, next: NextFunction) {
+async function updateVeterinario(req: Request, res: Response) {
     const id = Number(req.params.id);
     const data = req.body as Veterinario;
 
@@ -37,7 +37,7 @@ async function updateVeterinario(req: Request, res: Response, next: NextFunction
         res.sendStatus(404);
 }
 
-async function deleteVeterinario(req: Request, res: Response, next: NextFunction) {
+async function deleteVeterinario(req: Request, res: Response) {
     const id = Number(req.params.id);
 
     if (await VeterinarioRepository.deleteVeterinario(id))

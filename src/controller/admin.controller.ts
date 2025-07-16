@@ -1,8 +1,8 @@
 import Admin from "../model/admin.model";
 import AdminRepository from "../repositories/admin.repository";
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 
-async function getAdmin(req: Request, res: Response, next: NextFunction) {
+async function getAdmin(req: Request, res: Response) {
     const id = Number(req.params.id);
     const Admin = await AdminRepository.getAdmin(id);
 
@@ -12,20 +12,20 @@ async function getAdmin(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function getAdmins(req: Request, res: Response, next: NextFunction) {
+async function getAdmins(res: Response) {
     const Admins = await AdminRepository.getAdmins();
 
     res.status(200).json(Admins);
 }
 
-async function addAdmin(req: Request, res: Response, next: NextFunction) {
+async function addAdmin(req: Request, res: Response) {
     const data = req.body as Admin;
     const Admin = await AdminRepository.addAdmin(data);
 
     res.status(201).json(Admin);
 }
 
-async function updateAdmin(req: Request, res: Response, next: NextFunction) {
+async function updateAdmin(req: Request, res: Response) {
     const id = Number(req.params.id);
     const data = req.body as Admin;
 
@@ -37,7 +37,7 @@ async function updateAdmin(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function deleteAdmin(req: Request, res: Response, next: NextFunction) {
+async function deleteAdmin(req: Request, res: Response) {
     const id = Number(req.params.id);
 
     if (await AdminRepository.deleteAdmin(id))

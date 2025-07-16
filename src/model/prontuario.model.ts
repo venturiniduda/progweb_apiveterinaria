@@ -1,6 +1,7 @@
-import { PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Consulta } from "./consulta.model";
 
+@Entity()
 export class Prontuario {
   @PrimaryGeneratedColumn()
   prontuario_id: number;

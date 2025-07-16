@@ -1,5 +1,7 @@
-import { PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from 'typeorm';
 import { Estoque } from "./estoque.model";
+
+@Entity()
 export class Medicamento {
   @PrimaryGeneratedColumn()
   med_id: number;

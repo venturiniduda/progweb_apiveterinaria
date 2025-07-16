@@ -6,6 +6,8 @@ import VeterinarioRouter from "./veterinario.router"
 import MedicamentoRouter from "./medicamento.router"
 import EstoqueRouter from "./estoque.router"
 import UserRouter from "./user.router"
+import ConsultaRouter from "./consulta.router"
+import ProntuarioRouter from "./prontuario.router"
 import { apiKeyAuthMiddleware, jwtAuthMiddleware } from "../middlewares/auth.middleware";
 import loginController from "../controller/login.controller";
 
@@ -30,5 +32,7 @@ router.get("/veterinario", jwtAuthMiddleware, VeterinarioRouter);
 router.get("/medicamento", jwtAuthMiddleware, MedicamentoRouter);
 router.get("/estoque", jwtAuthMiddleware, EstoqueRouter);
 router.get("/users", UserRouter);
+router.get("/consulta", ConsultaRouter);
+router.get("/prontuario", ProntuarioRouter);
 
 export default router;

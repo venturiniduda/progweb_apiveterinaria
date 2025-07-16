@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from "typeorm";
-import Consulta from "./consulta.model";
+import { Consulta } from "./consulta.model";
 
 @Entity()
-class Veterinario {
+export class Veterinario {
     @PrimaryGeneratedColumn()
     vet_id: number;
 
@@ -28,4 +28,4 @@ class Veterinario {
       consultas: Consulta[];
 }
 
-export default Veterinario;
+// export default Veterinario;

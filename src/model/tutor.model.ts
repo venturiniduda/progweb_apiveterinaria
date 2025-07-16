@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn } from "typeorm";
-import Paciente from "./paciente.model";
-import Consulta from "./consulta.model";
+import { Paciente } from "./paciente.model";
+import { Consulta } from "./consulta.model";
 
 @Entity()
-class Tutor {
+export class Tutor {
 
   @PrimaryGeneratedColumn()
   tutor_id: number;
@@ -51,4 +51,4 @@ class Tutor {
   consultas: Consulta[];
 }
 
-export default Tutor;
+// export default Tutor;

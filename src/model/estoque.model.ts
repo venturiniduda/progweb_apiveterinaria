@@ -1,5 +1,5 @@
 import { PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, JoinColumn } from 'typeorm';
-import Medicamento from "./medicamento.model";
+import { Medicamento } from "./medicamento.model";
 
 export class Estoque {
   @PrimaryGeneratedColumn()
@@ -31,4 +31,4 @@ export class Estoque {
   criado_em: Date;
 }
 
-export default Estoque;
+// export default Estoque;

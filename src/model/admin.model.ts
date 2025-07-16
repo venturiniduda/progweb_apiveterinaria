@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
 
 @Entity()
-class Admin {
+export class Admin {
 
   @PrimaryGeneratedColumn()
   admin_id: number;
@@ -53,4 +53,4 @@ class Admin {
 
 }
 
-export default Admin;
+// export default Admin;

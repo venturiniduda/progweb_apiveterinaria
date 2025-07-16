@@ -8,6 +8,9 @@ import EstoqueRouter from "./estoque.router"
 import UserRouter from "./user.router"
 import ConsultaRouter from "./consulta.router"
 import ProntuarioRouter from "./prontuario.router"
+import CobrancaRouter from "./cobranca.router"
+import NotificacaoRouter from "./notificacao.router"
+import ReceitaRouter from "./receita.router"
 import { jwtAuthMiddleware } from "../middlewares/auth.middleware";
 import loginController from "../controller/login.controller";
 
@@ -24,5 +27,8 @@ router.get("/estoque", jwtAuthMiddleware, EstoqueRouter);
 router.get("/users", UserRouter);
 router.get("/consulta", ConsultaRouter);
 router.get("/prontuario", ProntuarioRouter);
+router.get("/cobranca", CobrancaRouter);
+router.get("/notificacao", NotificacaoRouter);
+router.get("/receita", ReceitaRouter);
 
 export default router;

@@ -1,18 +1,26 @@
-import swaggerAutogen from "swagger-autogen";
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import { Express } from 'express';
 
-const config = {
+const options: swaggerJsdoc.Options = {
+  definition: {
+    openapi: '3.0.0',
     info: {
-        version: 'v1.0.0',
-        title: 'Clínica Veterinária Francisco - CRUD',
-        description: 'Clínica Veterinária Francisco - API documentation'
+      title: 'API Clínica Veterinária',
+      version: '1.0.0',
+      description: 'Documentação interativa da API da Clínica Veterinária',
     },
-    host: `localhost:${process.env.PORT || 10000}`,
-    basePath: '/api/v1',
-    schemes: ['http', 'https'],
-
+    servers: [
+      {
+        url: 'http://localhost:12345',
+      },
+    ],
+  },
+  apis: ['src/routers/*.ts'],
 };
 
-const output = './docs/swagger.json';
-const endpoints = ['./src/routers/index.ts'];
+const swaggerSpec = swaggerJsdoc(options);
 
-swaggerAutogen(output, endpoints, config);
+export function setupSwagger(app: Express): void {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+}

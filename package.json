@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx nodemon src/app.ts --watch 'src/' -e ts",
     "build": "npx tsc",
-    "start": "node dist/app.ts",
+    "start": "node dist/app.js",
     "swagger": "ts-node src/swagger.ts",
     "lint": "eslint . --ext .ts"
   },

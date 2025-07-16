@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, OneToMany } from 'typeorm';
 import Tutor from './tutor.model';
+import Consulta from './consulta.model';
 
 @Entity()
 export class Paciente {
@@ -30,6 +31,9 @@ export class Paciente {
 
   @CreateDateColumn({ type: "timestamp" })
   criado_em: Date;
+
+  @OneToMany(() => Consulta, (consulta) => consulta.tutor)
+    consultas: Consulta[];
 }
 
 export default Paciente;

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from "typeorm";
+import Consulta from "./consulta.model";
 
 @Entity()
 class Veterinario {
@@ -22,6 +23,9 @@ class Veterinario {
 
     @CreateDateColumn({ type: "timestamp" })
       criado_em: Date;
+
+    @OneToMany(() => Consulta, (consulta) => consulta.tutor)
+      consultas: Consulta[];
 }
 
 export default Veterinario;

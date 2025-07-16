@@ -6,7 +6,6 @@ import router from "./routers";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./docs/swagger.json";
 import { AppDataSource } from "./data-source";
-import { setupSwagger } from "./swagger";
 
 AppDataSource.initialize() 
     .then(() => {
@@ -29,8 +28,6 @@ app.use((req, res: Response) => {
 });
 
 const PORT = process.env.PORT || 12345
-
-setupSwagger(app);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server is running at http://localhost:${PORT}`);

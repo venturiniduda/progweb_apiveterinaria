@@ -48,7 +48,7 @@ const config = {
     },
   },
   definitions: {
-    // são os exemplos de preenchimento de cada uma das entidades
+    // são os exemplos de preenchimento de cada uma das entidades, de acordo com os campos definidos no retorno do controller
     AddUser: {
       $username: "testuser",
       $password: "password123" 
@@ -63,7 +63,8 @@ const config = {
     },
     User: {
       id: 1,
-      username: 'antonio'
+      username: 'antonio',
+      password: 'dhbshjkvhsfjvjsdkfhjvskdfjvskj'
     },
     // adicionar restante 
   }

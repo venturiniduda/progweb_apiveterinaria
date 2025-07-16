@@ -31,4 +31,4 @@ export class Prontuario {
     criado_em: Date;
 }
 
-// export default Prontuario;
+export default Prontuario;

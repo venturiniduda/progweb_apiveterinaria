@@ -42,4 +42,4 @@ export class Medicamento {
   Estoque: any;
 }
 
-// export default Medicamento;
+export default Medicamento;

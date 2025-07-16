@@ -51,4 +51,4 @@ export class Tutor {
   consultas: Consulta[];
 }
 
-// export default Tutor;
+export default Tutor;

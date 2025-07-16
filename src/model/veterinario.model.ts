@@ -28,4 +28,4 @@ export class Veterinario {
       consultas: Consulta[];
 }
 
-// export default Veterinario;
+export default Veterinario;

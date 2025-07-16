@@ -53,4 +53,4 @@ export class Admin {
 
 }
 
-// export default Admin;
+export default Admin;

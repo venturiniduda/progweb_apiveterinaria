@@ -45,4 +45,4 @@ export class Consulta {
     prontuarios: Prontuario[];
 }
 
-// export default Consulta;
+export default Consulta;

@@ -31,4 +31,4 @@ export class Estoque {
   criado_em: Date;
 }
 
-// export default Estoque;
+export default Estoque;

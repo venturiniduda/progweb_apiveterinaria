@@ -36,4 +36,4 @@ export class Paciente {
     consultas: Consulta[];
 }
 
-// export default Paciente;
+export default Paciente;

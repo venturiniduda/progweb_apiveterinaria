@@ -13,7 +13,7 @@ AppDataSource.initialize()
     })
     .catch((err) => {
         console.error('❌ Error connecting to the database:', err);
-        process.exit(1);
+        // process.exit(1);
     });
 
 const app = express();

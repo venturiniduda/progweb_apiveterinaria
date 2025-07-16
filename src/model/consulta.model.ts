@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import Animal, { Paciente } from './paciente.model';
 import Tutor from './tutor.model';
 import Veterinario from './veterinario.model';
+import Prontuario from './prontuario.model';
 
 export class Consulta {
   @PrimaryGeneratedColumn()
@@ -39,6 +40,9 @@ export class Consulta {
 
   @CreateDateColumn({ type: "timestamp" })
     criado_em: Date;
+
+  @OneToMany(() => Prontuario, (prontuario) => prontuario.consulta)
+    prontuarios: Prontuario[];
 }
 
 export default Consulta;

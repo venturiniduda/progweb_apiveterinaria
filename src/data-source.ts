@@ -15,7 +15,7 @@ dotenv.config();
 //     }
 // });
 
-const isProd = process.env.NODE_ENV === "Production";
+const isProd = process.env.NODE_ENV === "production";
 
 export const AppDataSource = new DataSource({
   type: "postgres",

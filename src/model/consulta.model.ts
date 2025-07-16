@@ -1,8 +1,8 @@
 import { PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
-import { Paciente } from './paciente.model';
-import Tutor from './tutor.model';
-import Veterinario from './veterinario.model';
-import Prontuario from './prontuario.model';
+import { Paciente } from "./paciente.model";
+import Tutor from "./tutor.model";
+import Veterinario from "./veterinario.model";
+import Prontuario from "./prontuario.model";
 
 export class Consulta {
   @PrimaryGeneratedColumn()

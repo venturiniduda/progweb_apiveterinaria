@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn } from "typeorm";
-import Paciente from './paciente.model';
+import Paciente from "./paciente.model";
 import Consulta from "./consulta.model";
 
 @Entity()

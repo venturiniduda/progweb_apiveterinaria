@@ -1,5 +1,5 @@
 import { PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import Consulta from './consulta.model';
+import Consulta from "./consulta.model";
 
 export class Prontuario {
   @PrimaryGeneratedColumn()

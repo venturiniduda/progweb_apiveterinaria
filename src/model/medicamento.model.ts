@@ -38,8 +38,7 @@ export class Medicamento {
     criado_em: Date;
 
   @ManyToOne(() => Estoque, (estoque) => estoque.medicamento)
-  medicamentos: Medicamento[];
-  Estoque: any;
+  estoque: Estoque;
 }
 
 // export default Medicamento;

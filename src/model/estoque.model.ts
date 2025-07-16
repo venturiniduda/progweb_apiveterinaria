@@ -5,7 +5,7 @@ export class Estoque {
   @PrimaryGeneratedColumn()
   estoque_id: number;
 
-  @OneToMany(() => Medicamento, (medicamento) => medicamento.Estoque, { nullable: false })
+  @OneToMany(() => Medicamento, (medicamento) => medicamento.estoque, { nullable: false })
   @JoinColumn({ name: 'med_id' })
   medicamento: Medicamento;
 

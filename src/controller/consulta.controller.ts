@@ -1,8 +1,8 @@
 import Consulta from "../model/consulta.model";
 import ConsultaRepository from "../repositories/consulta.repository";
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 
-async function getConsulta(req: Request, res: Response, next: NextFunction) {
+async function getConsulta(req: Request, res: Response) {
     const id = Number(req.params.id);
     const Consulta = await ConsultaRepository.getConsulta(id);
 
@@ -12,20 +12,20 @@ async function getConsulta(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function getConsultas(req: Request, res: Response, next: NextFunction) {
+async function getConsultas(res: Response) {
     const Consultas = await ConsultaRepository.getConsultas();
 
     res.status(200).json(Consultas);
 }
 
-async function addConsulta(req: Request, res: Response, next: NextFunction) {
+async function addConsulta(req: Request, res: Response) {
     const data = req.body as Consulta;
     const Consulta = await ConsultaRepository.addConsulta(data);
 
     res.status(201).json(Consulta);
 }
 
-async function updateConsulta(req: Request, res: Response, next: NextFunction) {
+async function updateConsulta(req: Request, res: Response) {
     const id = Number(req.params.id);
     const data = req.body as Consulta;
 
@@ -37,7 +37,7 @@ async function updateConsulta(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function deleteConsulta(req: Request, res: Response, next: NextFunction) {
+async function deleteConsulta(req: Request, res: Response) {
     const id = Number(req.params.id);
 
     if (await ConsultaRepository.deleteConsulta(id))

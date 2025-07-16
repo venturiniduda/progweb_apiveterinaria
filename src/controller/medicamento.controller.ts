@@ -1,8 +1,8 @@
 import Medicamento from "../model/medicamento.model";
 import MedicamentoRepository from "../repositories/medicamento.repository";
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 
-async function getMedicamento(req: Request, res: Response, next: NextFunction) {
+async function getMedicamento(req: Request, res: Response) {
     const id = Number(req.params.id);
     const Medicamento = await MedicamentoRepository.getMedicamento(id);
 
@@ -12,20 +12,20 @@ async function getMedicamento(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function getMedicamentos(req: Request, res: Response, next: NextFunction) {
+async function getMedicamentos(res: Response) {
     const Medicamentos = await MedicamentoRepository.getMedicamentos();
 
     res.status(200).json(Medicamentos);
 }
 
-async function addMedicamento(req: Request, res: Response, next: NextFunction) {
+async function addMedicamento(req: Request, res: Response) {
     const data = req.body as Medicamento;
     const Medicamento = await MedicamentoRepository.addMedicamento(data);
 
     res.status(201).json(Medicamento);
 }
 
-async function updateMedicamento(req: Request, res: Response, next: NextFunction) {
+async function updateMedicamento(req: Request, res: Response) {
     const id = Number(req.params.id);
     const data = req.body as Medicamento;
 
@@ -37,7 +37,7 @@ async function updateMedicamento(req: Request, res: Response, next: NextFunction
         res.sendStatus(404);
 }
 
-async function deleteMedicamento(req: Request, res: Response, next: NextFunction) {
+async function deleteMedicamento(req: Request, res: Response) {
     const id = Number(req.params.id);
 
     if (await MedicamentoRepository.deleteMedicamento(id))

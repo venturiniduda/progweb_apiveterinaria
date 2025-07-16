@@ -1,8 +1,8 @@
 import Tutor from "../model/tutor.model";
 import TutorRepository from "../repositories/tutor.repository";
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 
-async function getTutor(req: Request, res: Response, next: NextFunction) {
+async function getTutor(req: Request, res: Response) {
     const id = Number(req.params.id);
     const Tutor = await TutorRepository.getTutor(id);
 
@@ -12,20 +12,20 @@ async function getTutor(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function getTutores(req: Request, res: Response, next: NextFunction) {
+async function getTutores(res: Response) {
     const Tutors = await TutorRepository.getTutores();
 
     res.status(200).json(Tutors);
 }
 
-async function addTutor(req: Request, res: Response, next: NextFunction) {
+async function addTutor(req: Request, res: Response) {
     const data = req.body as Tutor;
     const Tutor = await TutorRepository.addTutor(data);
 
     res.status(201).json(Tutor);
 }
 
-async function updateTutor(req: Request, res: Response, next: NextFunction) {
+async function updateTutor(req: Request, res: Response) {
     const id = Number(req.params.id);
     const data = req.body as Tutor;
 
@@ -37,7 +37,7 @@ async function updateTutor(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function deleteTutor(req: Request, res: Response, next: NextFunction) {
+async function deleteTutor(req: Request, res: Response) {
     const id = Number(req.params.id);
 
     if (await TutorRepository.deleteTutor(id))

@@ -8,7 +8,7 @@ import EstoqueRouter from "./estoque.router"
 import UserRouter from "./user.router"
 import ConsultaRouter from "./consulta.router"
 import ProntuarioRouter from "./prontuario.router"
-import { apiKeyAuthMiddleware, jwtAuthMiddleware } from "../middlewares/auth.middleware";
+import { jwtAuthMiddleware } from "../middlewares/auth.middleware";
 import loginController from "../controller/login.controller";
 
 const router = express.Router();

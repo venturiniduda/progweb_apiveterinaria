@@ -1,8 +1,8 @@
 import Estoque from "../model/estoque.model";
 import EstoqueRepository from "../repositories/estoque.repository";
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 
-async function getEstoque(req: Request, res: Response, next: NextFunction) {
+async function getEstoque(req: Request, res: Response) {
     const id = Number(req.params.id);
     const Estoque = await EstoqueRepository.getEstoque(id);
 
@@ -12,20 +12,20 @@ async function getEstoque(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function getEstoques(req: Request, res: Response, next: NextFunction) {
+async function getEstoques(res: Response) {
     const Estoques = await EstoqueRepository.getEstoques();
 
     res.status(200).json(Estoques);
 }
 
-async function addEstoque(req: Request, res: Response, next: NextFunction) {
+async function addEstoque(req: Request, res: Response) {
     const data = req.body as Estoque;
     const Estoque = await EstoqueRepository.addEstoque(data);
 
     res.status(201).json(Estoque);
 }
 
-async function updateEstoque(req: Request, res: Response, next: NextFunction) {
+async function updateEstoque(req: Request, res: Response) {
     const id = Number(req.params.id);
     const data = req.body as Estoque;
 
@@ -37,7 +37,7 @@ async function updateEstoque(req: Request, res: Response, next: NextFunction) {
         res.sendStatus(404);
 }
 
-async function deleteEstoque(req: Request, res: Response, next: NextFunction) {
+async function deleteEstoque(req: Request, res: Response) {
     const id = Number(req.params.id);
 
     if (await EstoqueRepository.deleteEstoque(id))

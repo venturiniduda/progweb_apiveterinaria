@@ -1,10 +1,10 @@
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 import { AppDataSource } from "../data-source";
 import { User } from "../model/user.model";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 
-async function login(req: Request, res: Response, next: NextFunction) {
+async function login(req: Request, res: Response) {
     const { username, password } = req.body;
 
     if (!username || !password){

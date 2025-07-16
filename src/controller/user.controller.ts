@@ -1,7 +1,7 @@
-import { Request,Response, NextFunction } from "express";
+import { Request,Response } from "express";
 import userRepostory from "../repositories/user.repository";
 
-async function addUser(req: Request, res: Response, next: NextFunction) {
+async function addUser(req: Request, res: Response) {
     const { username, password } = req.body;
     const user = await userRepostory.addUser(username,password);
 

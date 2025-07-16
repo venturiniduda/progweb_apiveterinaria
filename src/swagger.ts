@@ -6,7 +6,7 @@ const config = {
         title: 'Clínica Veterinária Francisco - CRUD',
         description: 'Clínica Veterinária Francisco - API documentation'
     },
-    host: `localhost:${process.env.PORT || 3000}`,
+    host: `localhost:${process.env.PORT || 10000}`,
     basePath: '/api/v1',
     schemes: ['http', 'https'],
 

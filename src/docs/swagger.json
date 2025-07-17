@@ -31,6 +31,34 @@
     {
       "name": "Medicamento",
       "description": "Medicamento management endpoints"
+    },
+    {
+      "name": "Notificação",
+      "description": "Notificação management endpoints"
+    },
+    {
+      "name": "Paciente",
+      "description": "Paciente management endpoints"
+    },
+    {
+      "name": "Prontuário",
+      "description": "Prontuário management endpoints"
+    },
+    {
+      "name": "Receita",
+      "description": "Receita management endpoints"
+    },
+    {
+      "name": "Tutor",
+      "description": "Tutor management endpoints"
+    },
+    {
+      "name": "Veterinário",
+      "description": "Veterinário management endpoints"
+    },
+    {
+      "name": "Admin",
+      "description": "Admin management endpoints"
     }
   ],
   "schemes": [
@@ -310,6 +338,300 @@
         "password": {
           "type": "string",
           "example": "dhbshjkvhsfjvjsdkfhjvskdfjvskj"
+        }
+      }
+    },
+    "Admin": {
+      "type": "object",
+      "properties": {
+        "admin_id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Maria"
+        },
+        "sobrenome": {
+          "type": "string",
+          "example": "Silva"
+        },
+        "cpf": {
+          "type": "string",
+          "example": "12345678900"
+        },
+        "email": {
+          "type": "string",
+          "example": "admin@vet.com"
+        },
+        "senha": {
+          "type": "string",
+          "example": "123456"
+        }
+      }
+    },
+    "Tutor": {
+      "type": "object",
+      "properties": {
+        "tutor_id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "João"
+        },
+        "sobrenome": {
+          "type": "string",
+          "example": "Silva"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "11999999999"
+        },
+        "email": {
+          "type": "string",
+          "example": "joao@email.com"
+        },
+        "cpf": {
+          "type": "string",
+          "example": "12345678900"
+        }
+      }
+    },
+    "Paciente": {
+      "type": "object",
+      "properties": {
+        "animal_id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Rex"
+        },
+        "especie": {
+          "type": "string",
+          "example": "Cachorro"
+        },
+        "raca": {
+          "type": "string",
+          "example": "Labrador"
+        },
+        "data_nascimento": {
+          "type": "string",
+          "example": "2020-01-01"
+        },
+        "tutor": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "Consulta": {
+      "type": "object",
+      "properties": {
+        "consulta_id": {
+          "type": "number",
+          "example": 1
+        },
+        "data": {
+          "type": "string",
+          "example": "2025-07-17T10:00:00Z"
+        },
+        "motivo": {
+          "type": "string",
+          "example": "Vacinação"
+        },
+        "paciente": {
+          "type": "number",
+          "example": 1
+        },
+        "tutor": {
+          "type": "number",
+          "example": 1
+        },
+        "veterinario": {
+          "type": "number",
+          "example": 2
+        }
+      }
+    },
+    "Receita": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "descricao": {
+          "type": "string",
+          "example": "Antibiótico 2x ao dia"
+        },
+        "valor": {
+          "type": "number",
+          "example": 120.5
+        },
+        "createdAt": {
+          "type": "string",
+          "example": "2025-07-17T10:00:00Z"
+        }
+      }
+    },
+    "Medicamento": {
+      "type": "object",
+      "properties": {
+        "med_id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Vermífugo X"
+        },
+        "principio_ativo": {
+          "type": "string",
+          "example": "Albendazol"
+        },
+        "forma_farmaceutica": {
+          "type": "string",
+          "example": "Comprimido"
+        },
+        "dosagem": {
+          "type": "string",
+          "example": "500mg"
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 50
+        },
+        "validade": {
+          "type": "string",
+          "example": "2025-12-31"
+        }
+      }
+    },
+    "Estoque": {
+      "type": "object",
+      "properties": {
+        "estoque_id": {
+          "type": "number",
+          "example": 1
+        },
+        "medicamentos": {
+          "type": "array",
+          "example": [
+            "id_medicamento_1",
+            "id_medicamento_2"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Cobranca": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "cliente": {
+          "type": "string",
+          "example": "João"
+        },
+        "valor": {
+          "type": "number",
+          "example": 150
+        },
+        "status": {
+          "type": "string",
+          "example": "pago"
+        },
+        "createdAt": {
+          "type": "string",
+          "example": "2025-07-17T10:00:00Z"
+        }
+      }
+    },
+    "Prontuario": {
+      "type": "object",
+      "properties": {
+        "prontuario_id": {
+          "type": "number",
+          "example": 1
+        },
+        "consulta": {
+          "type": "number",
+          "example": 1
+        },
+        "observacoes": {
+          "type": "string",
+          "example": "Animal saudável"
+        },
+        "prescricao": {
+          "type": "string",
+          "example": "Repouso e alimentação"
+        }
+      }
+    },
+    "Notificacao": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "mensagem": {
+          "type": "string",
+          "example": "Vacina agendada"
+        },
+        "tipo": {
+          "type": "string",
+          "example": "lembrete"
+        },
+        "dataEnvio": {
+          "type": "string",
+          "example": "2025-07-15T10:00:00Z"
+        }
+      }
+    },
+    "Veterinario": {
+      "type": "object",
+      "properties": {
+        "vet_id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Ana"
+        },
+        "sobrenome": {
+          "type": "string",
+          "example": "Costa"
+        },
+        "crmv": {
+          "type": "string",
+          "example": "SP123456"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "11987654321"
+        },
+        "email": {
+          "type": "string",
+          "example": "ana.vet@clinicavet.com"
+        },
+        "criado_em": {
+          "type": "string",
+          "example": "2025-07-17T10:00:00Z"
+        },
+        "consultas": {
+          "type": "array",
+          "example": [],
+          "items": {}
         }
       }
     }

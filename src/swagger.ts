@@ -35,7 +35,7 @@ const config = {
     },
   },
   definitions: {
-    AddUser: {
+    addUser: {
       $username: 'testuser',
       $password: 'password123',
     },

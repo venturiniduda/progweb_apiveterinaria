@@ -277,7 +277,7 @@
     }
   },
   "definitions": {
-    "AddUser": {
+    "addUser": {
       "type": "object",
       "properties": {
         "username": {

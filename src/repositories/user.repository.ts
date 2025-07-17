@@ -1,12 +1,13 @@
 import { AppDataSource } from "../data-source";
 import { User }  from "../model/user.model";
-
-const repository = AppDataSource.getRepository(User);
+import * as bcrypt from 'bcryptjs';
 
 async function addUser(username: string, password: string) : Promise<User> {
+    const repository = AppDataSource.getRepository(User);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = repository.create({
         "username": username,
-        "password": password
+        "password": hashedPassword
     });
     
     return await repository.save(user);

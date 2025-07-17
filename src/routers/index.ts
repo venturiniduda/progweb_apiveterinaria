@@ -16,21 +16,6 @@ import loginController from "../controller/login.controller";
 
 const router = express.Router();
 
-// essa é mais usada no dia a dia no mercado de trabalho:
-// router.post('/login', loginController.login);
-// router.get("/paciente", jwtAuthMiddleware, PacienteRouter);
-// router.get("/tutor", jwtAuthMiddleware, TutorRouter);
-// router.get("/admin", jwtAuthMiddleware, AdminRouter);
-// router.get("/veterinario", jwtAuthMiddleware, VeterinarioRouter);
-// router.get("/medicamento", jwtAuthMiddleware, MedicamentoRouter);
-// router.get("/estoque", jwtAuthMiddleware, EstoqueRouter);
-// router.get("/users", UserRouter);
-// router.get("/consulta", ConsultaRouter);
-// router.get("/prontuario", ProntuarioRouter);
-// router.get("/cobranca", CobrancaRouter);
-// router.get("/notificacao", NotificacaoRouter);
-// router.get("/receita", ReceitaRouter);
-
 router.post('/login', loginController.login);
 
 router.use("/paciente", jwtAuthMiddleware, PacienteRouter);

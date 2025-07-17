@@ -1,4 +1,5 @@
 import controller from '../controller/veterinario.controller';
+import Veterinario from '../model/veterinario.model';
 import VeterinarioRepository from '../repositories/veterinario.repository';
 import { Request, Response } from 'express';
 
@@ -28,27 +29,44 @@ describe('Veterinario Controller', () => {
   });
 
   describe('getVeterinario', () => {
-    it('deve retornar um veterinário com status 200', async () => {
-      req.params = { id: '1' };
-      const mockVeterinario = { id: 1, nome: 'Dr. Vet' };
+    it('getVeterinario deve retornar um veterinário com status 200', async () => {
+  const mockVeterinario = { vet_id: 1, nome: 'Dr. Vet' } as Veterinario;
+  jest.spyOn(VeterinarioRepository, 'getVeterinario').mockResolvedValue(mockVeterinario);
 
-      (VeterinarioRepository.getVeterinario as jest.Mock).mockResolvedValue(mockVeterinario);
+  const jsonMock = jest.fn();
+  const res = {
+    status: jest.fn().mockReturnThis(),
+    json: jsonMock,
+  } as unknown as Response;
 
-      await controller.getVeterinario(req as Request, res as Response);
+  await controller.getVeterinario(
+    { params: { id: '1' } } as unknown as Request,
+    res as Response
+  );
 
-      expect(VeterinarioRepository.getVeterinario).toHaveBeenCalledWith(1);
-      expect(res.status).toHaveBeenCalledWith(200);
-      expect(jsonMock).toHaveBeenCalledWith(mockVeterinario);
-    });
+  expect(VeterinarioRepository.getVeterinario).toHaveBeenCalledWith(1);
+  expect(res.status).toHaveBeenCalledWith(200);
+  expect(jsonMock).toHaveBeenCalledWith(mockVeterinario);
+});
 
     it('deve retornar 404 se o veterinário não existir', async () => {
       req.params = { id: '2' };
 
       (VeterinarioRepository.getVeterinario as jest.Mock).mockResolvedValue(null);
 
-      await controller.getVeterinario(req as Request, res as Response);
+      jest.spyOn(VeterinarioRepository, 'getVeterinario').mockResolvedValue(null);
 
-      expect(res.sendStatus).toHaveBeenCalledWith(404);
+const res = {
+  sendStatus: jest.fn(),
+} as unknown as Response;
+
+await controller.getVeterinario(
+  { params: { id: '999' } } as unknown as Request,
+  res
+);
+
+expect(res.sendStatus).toHaveBeenCalledWith(404);
+
     });
   });
 
@@ -57,7 +75,7 @@ describe('Veterinario Controller', () => {
       const mockLista = [{ id: 1, nome: 'Dr. Vet' }];
       (VeterinarioRepository.getVeterinarios as jest.Mock).mockResolvedValue(mockLista);
 
-      await controller.getVeterinarios(res as Response);
+      await controller.getVeterinarios({} as Request, res as Response);
 
       expect(res.status).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(mockLista);

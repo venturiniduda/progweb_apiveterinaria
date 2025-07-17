@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
 import request from 'supertest';
-import router from '../routers/veterinario.router';
-import VeterinarioController from '../controller/veterinario.controller';
+import router from '../../routers/veterinario.router';
+import VeterinarioController from '../../controller/veterinario.controller';
 
 // Mocka todos os métodos do controller
-jest.mock('../controller/veterinario.controller', () => ({
+jest.mock('../../controller/veterinario.controller', () => ({
   getVeterinario: jest.fn((req: Request, res: Response) => res.status(200).send('get')),
   addVeterinario: jest.fn((req: Request, res: Response) => res.status(201).send('post')),
   updateVeterinario: jest.fn((req: Request, res: Response) => res.status(200).send('patch')),

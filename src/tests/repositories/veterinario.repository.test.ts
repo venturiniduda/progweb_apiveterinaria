@@ -1,4 +1,4 @@
-import Veterinario from "../model/veterinario.model";
+import Veterinario from '../../model/veterinario.model';
 
 // Mock repository and service setup
 const mockRepository = {

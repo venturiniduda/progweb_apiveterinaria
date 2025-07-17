@@ -1,9 +1,9 @@
 import { DataSource } from 'typeorm';
-import Veterinario from '../model/veterinario.model';
-import { Consulta } from '../model/consulta.model'; 
-import Tutor from '../model/tutor.model';
-import Paciente from '../model/paciente.model';
-import Prontuario from '../model/prontuario.model';
+import Veterinario from '../../model/veterinario.model';
+import { Consulta } from '../../model/consulta.model'; 
+import Tutor from '../../model/tutor.model';
+import Paciente from '../../model/paciente.model';
+import Prontuario from '../../model/prontuario.model';
 
 let testDataSource: DataSource;
 

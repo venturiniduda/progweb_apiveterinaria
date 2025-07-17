@@ -1,10 +1,10 @@
-import controller from '../controller/veterinario.controller';
-import Veterinario from '../model/veterinario.model';
-import VeterinarioRepository from '../repositories/veterinario.repository';
+import controller from '../../controller/veterinario.controller';
+import Veterinario from '../../model/veterinario.model';
+import VeterinarioRepository from '../../repositories/veterinario.repository';
 import { Request, Response } from 'express';
 
 // Cria mocks para os métodos do repositório
-jest.mock('../repositories/veterinario.repository');
+jest.mock('../../repositories/veterinario.repository');
 
 describe('Veterinario Controller', () => {
   let req: Partial<Request>;

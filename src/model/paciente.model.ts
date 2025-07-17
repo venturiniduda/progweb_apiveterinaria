@@ -29,7 +29,7 @@ export class Paciente {
   @Column()
   data_nascimento: Date;
 
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn({ type: "datetime" })
   criado_em: Date;
 
   @OneToMany(() => Consulta, (consulta) => consulta.tutor)

@@ -41,7 +41,7 @@ export class Tutor {
   @Column({ length: 11 })
   telefone: string;
 
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn({ type: "datetime" })
   criado_em: Date;
 
   @OneToMany(() => Paciente, (paciente) => paciente.tutor)

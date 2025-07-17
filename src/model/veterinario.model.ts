@@ -21,10 +21,10 @@ export class Veterinario {
     @Column({ length: 30})
     email: string;
 
-    @CreateDateColumn({ type: "timestamp" })
+    @CreateDateColumn({ type: "datetime" })
       criado_em: Date;
 
-    @OneToMany(() => Consulta, (consulta) => consulta.tutor)
+    @OneToMany(() => Consulta, (consulta) => consulta.veterinario)
       consultas: Consulta[];
 }
 

@@ -9,7 +9,7 @@ async function addUser(req: Request, res: Response, next: NextFunction) {
         in: 'body',
         description: 'User data to create.',
         required: true,
-        schema: { $ref: "#/definitions/addUser" }
+        schema: { $ref: "#/definitions/AddUser" }
        },
        #swagger.responses[201] = {
             description: 'User created successfully.',

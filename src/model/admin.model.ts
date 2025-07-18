@@ -48,7 +48,7 @@ export class Admin {
   @Column({ length: 60 })
   senha_hash: string;
 
-  @CreateDateColumn({ type: "datetime" })
+  @CreateDateColumn({ type: "timestamp" })
   criado_em: Date;
 
 }

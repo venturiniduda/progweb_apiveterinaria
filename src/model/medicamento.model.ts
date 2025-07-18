@@ -36,7 +36,7 @@ export class Medicamento {
   @Column({ length: 1 })
   prescricao_obrigatoria: string;
 
-  @CreateDateColumn({ type: "datetime" })
+  @CreateDateColumn({ type: "timestamp" })
     criado_em: Date;
 
   @ManyToOne(() => Estoque, (estoque) => estoque.medicamento)

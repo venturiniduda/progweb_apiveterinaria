@@ -21,7 +21,7 @@ export class Veterinario {
     @Column({ length: 30})
     email: string;
 
-    @CreateDateColumn({ type: "datetime" })
+    @CreateDateColumn({ type: "timestamp" })
       criado_em: Date;
 
     @OneToMany(() => Consulta, (consulta) => consulta.veterinario)

@@ -2,7 +2,6 @@ import { Request,Response } from "express";
 import userRepostory from "../repositories/user.repository";
 
 async function addUser(req: Request, res: Response) {
-    // Comentários com tags especiais que são lidas pelo swagger e interpretadas como especificação:
     /* #swagger.tags = ['Users']
        #swagger.description = 'Creates a new user.'
        #swagger.parameters['body'] = {

@@ -82,7 +82,7 @@ describe('Consulta Controller', () => {
 
       (ConsultaRepository.getConsultas as jest.Mock).mockResolvedValue(consultasMock);
 
-      await consultaController.getConsultas(res as Response);
+      await consultaController.getConsultas(req as Request, res as Response);
 
       expect(statusMock).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(consultasMock);

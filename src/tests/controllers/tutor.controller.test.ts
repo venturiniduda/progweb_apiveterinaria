@@ -53,7 +53,7 @@ describe('Tutor Controller', () => {
       const tutoresMock = [{ id: 1, nome: 'João' }];
       (TutorRepository.getTutores as jest.Mock).mockResolvedValue(tutoresMock);
 
-      await tutorController.getTutores(res as Response);
+      await tutorController.getTutores(req as Request, res as Response);
 
       expect(statusMock).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(tutoresMock);

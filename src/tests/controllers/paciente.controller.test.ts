@@ -74,7 +74,7 @@ describe('Paciente Controller', () => {
 
       (PacienteRepository.getPacientes as jest.Mock).mockResolvedValue(pacientesMock);
 
-      await pacienteController.getPacientes(res as Response);
+      await pacienteController.getPacientes(req as Request, res as Response);
 
       expect(statusMock).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(pacientesMock);

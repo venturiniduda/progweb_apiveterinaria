@@ -76,7 +76,7 @@ describe('Estoque Controller', () => {
 
       (EstoqueRepository.getEstoques as jest.Mock).mockResolvedValue(estoquesMock);
 
-      await estoqueController.getEstoques(res as Response);
+      await estoqueController.getEstoques(req as Request, res as Response);
 
       expect(statusMock).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(estoquesMock);

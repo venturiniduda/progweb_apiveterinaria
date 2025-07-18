@@ -84,7 +84,7 @@ describe('Medicamento Controller', () => {
 
       (MedicamentoRepository.getMedicamentos as jest.Mock).mockResolvedValue(medicamentosMock);
 
-      await medicamentoController.getMedicamentos(res as Response);
+      await medicamentoController.getMedicamentos(req as Request, res as Response);
 
       expect(statusMock).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(medicamentosMock);

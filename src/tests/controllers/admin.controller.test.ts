@@ -90,7 +90,7 @@ describe('Admin Controller', () => {
 
       (AdminRepository.getAdmins as jest.Mock).mockResolvedValue(adminsMock);
 
-      await adminController.getAdmins(res as Response);
+      await adminController.getAdmins(req as Request, res as Response);
 
       expect(statusMock).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(adminsMock);

@@ -74,7 +74,7 @@ describe('Prontuario Controller', () => {
 
       (ProntuarioRepository.getProntuarios as jest.Mock).mockResolvedValue(prontuariosMock);
 
-      await prontuarioController.getProntuarios(res as Response);
+      await prontuarioController.getProntuarios(req as Request, res as Response);
 
       expect(statusMock).toHaveBeenCalledWith(200);
       expect(jsonMock).toHaveBeenCalledWith(prontuariosMock);

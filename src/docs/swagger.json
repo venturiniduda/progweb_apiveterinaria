@@ -82,19 +82,55 @@
   "paths": {
     "/login": {
       "post": {
-        "description": "",
+        "tags": [
+          "Auth"
+        ],
+        "description": "Realiza login do usuário e retorna um token JWT.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "Credenciais de login.",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "any"
+                "type": {
+                  "type": "string",
+                  "example": "object"
                 },
-                "password": {
-                  "example": "any"
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "password": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": {
+                  "type": "array",
+                  "example": [
+                    "username",
+                    "password"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -102,29 +138,68 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Login realizado com sucesso.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Usuário e/ou senha não informados."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Usuário e/ou senha inválidos."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Erro interno no servidor."
           }
         }
       }
     },
     "/paciente/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Paciente"
+        ],
+        "description": "Busca um paciente pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do paciente"
           },
           {
             "name": "authorization",
@@ -134,51 +209,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Paciente encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Paciente"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Paciente não encontrado."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Paciente"
+        ],
+        "description": "Atualiza os dados de um paciente existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do paciente"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados do paciente.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Paciente"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Paciente atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Paciente"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Paciente não encontrado."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Paciente"
+        ],
+        "description": "Exclui um paciente pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do paciente"
           },
           {
             "name": "authorization",
@@ -188,20 +286,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Paciente deletado com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Paciente não encontrado."
           }
         }
       }
     },
     "/paciente/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Paciente"
+        ],
+        "description": "Retorna todos os pacientes cadastrados.",
         "parameters": [
           {
             "name": "authorization",
@@ -211,7 +312,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de pacientes.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Paciente"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -219,17 +329,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Paciente"
+        ],
+        "description": "Cadastra um novo paciente.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do novo paciente.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Paciente"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Paciente criado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Paciente"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -239,13 +364,17 @@
     },
     "/tutor/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Tutor"
+        ],
+        "description": "Busca um tutor pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do tutor"
           },
           {
             "name": "authorization",
@@ -255,51 +384,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Tutor encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Tutor"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Tutor não encontrado."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Tutor"
+        ],
+        "description": "Atualiza os dados de um tutor existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do tutor"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados do tutor.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tutor"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Tutor atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Tutor"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Tutor não encontrado."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Tutor"
+        ],
+        "description": "Exclui um tutor pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do tutor"
           },
           {
             "name": "authorization",
@@ -309,20 +461,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Tutor deletado com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Tutor não encontrado."
           }
         }
       }
     },
     "/tutor/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Tutor"
+        ],
+        "description": "Retorna todos os tutores cadastrados.",
         "parameters": [
           {
             "name": "authorization",
@@ -332,7 +487,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de tutores.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tutor"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -340,17 +504,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Tutor"
+        ],
+        "description": "Cadastra um novo tutor.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do tutor a ser criado.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tutor"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Tutor criado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Tutor"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -360,13 +539,17 @@
     },
     "/admin/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Admins"
+        ],
+        "description": "Busca um administrador pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do administrador"
           },
           {
             "name": "authorization",
@@ -376,51 +559,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Administrador encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Administrador não encontrado."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Admins"
+        ],
+        "description": "Atualiza os dados de um administrador existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do administrador"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados do administrador.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Administrador atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Administrador não encontrado."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Admins"
+        ],
+        "description": "Exclui um administrador pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do administrador"
           },
           {
             "name": "authorization",
@@ -430,20 +636,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Administrador deletado com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Administrador não encontrado."
           }
         }
       }
     },
     "/admin/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Admins"
+        ],
+        "description": "Retorna todos os administradores cadastrados.",
         "parameters": [
           {
             "name": "authorization",
@@ -453,7 +662,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de administradores.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Admin"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -461,17 +679,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Admins"
+        ],
+        "description": "Cadastra um novo administrador.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do novo administrador.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Administrador criado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -660,13 +893,17 @@
     },
     "/medicamento/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Medicamento"
+        ],
+        "description": "Busca um medicamento pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do medicamento"
           },
           {
             "name": "authorization",
@@ -676,51 +913,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Medicamento encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Medicamento"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Medicamento não encontrado."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Medicamento"
+        ],
+        "description": "Atualiza os dados de um medicamento existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do medicamento"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados do medicamento.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Medicamento"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Medicamento atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Medicamento"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Medicamento não encontrado."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Medicamento"
+        ],
+        "description": "Exclui um medicamento pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do medicamento"
           },
           {
             "name": "authorization",
@@ -730,20 +990,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Medicamento deletado com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Medicamento não encontrado."
           }
         }
       }
     },
     "/medicamento/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Medicamento"
+        ],
+        "description": "Retorna todos os medicamentos cadastrados.",
         "parameters": [
           {
             "name": "authorization",
@@ -753,7 +1016,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de medicamentos.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Medicamento"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -761,17 +1033,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Medicamento"
+        ],
+        "description": "Cadastra um novo medicamento.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do novo medicamento.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Medicamento"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Medicamento criado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Medicamento"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -781,13 +1068,17 @@
     },
     "/estoque/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Estoque"
+        ],
+        "description": "Busca um estoque pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do estoque"
           },
           {
             "name": "authorization",
@@ -797,51 +1088,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Estoque encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Estoque não encontrado."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Estoque"
+        ],
+        "description": "Atualiza os dados de um estoque existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do estoque"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados do estoque.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Estoque atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Estoque não encontrado."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Estoque"
+        ],
+        "description": "Exclui um estoque pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do estoque"
           },
           {
             "name": "authorization",
@@ -851,20 +1165,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Estoque deletado com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Estoque não encontrado."
           }
         }
       }
     },
     "/estoque/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Estoque"
+        ],
+        "description": "Retorna todos os estoques cadastrados.",
         "parameters": [
           {
             "name": "authorization",
@@ -874,7 +1191,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de estoques.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Estoque"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -882,17 +1208,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Estoque"
+        ],
+        "description": "Cadastra um novo estoque.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do novo estoque.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Estoque criado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -937,13 +1278,17 @@
     },
     "/consulta/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Consulta"
+        ],
+        "description": "Busca uma consulta pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da consulta"
           },
           {
             "name": "authorization",
@@ -953,51 +1298,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Consulta encontrada.",
+            "schema": {
+              "$ref": "#/definitions/Consulta"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Consulta não encontrada."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Consulta"
+        ],
+        "description": "Atualiza os dados de uma consulta existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da consulta"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados da consulta.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Consulta"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Consulta atualizada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Consulta"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Consulta não encontrada."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Consulta"
+        ],
+        "description": "Exclui uma consulta pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da consulta"
           },
           {
             "name": "authorization",
@@ -1007,20 +1375,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Consulta deletada com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Consulta não encontrada."
           }
         }
       }
     },
     "/consulta/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Consulta"
+        ],
+        "description": "Retorna todas as consultas cadastradas.",
         "parameters": [
           {
             "name": "authorization",
@@ -1030,7 +1401,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de consultas.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Consulta"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1038,17 +1418,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Consulta"
+        ],
+        "description": "Cadastra uma nova consulta.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados da nova consulta.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Consulta"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Consulta criada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Consulta"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1058,13 +1453,17 @@
     },
     "/prontuario/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Prontuário"
+        ],
+        "description": "Busca um prontuário pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do prontuário"
           },
           {
             "name": "authorization",
@@ -1074,51 +1473,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Prontuário encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Prontuario"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Prontuário não encontrado."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Prontuário"
+        ],
+        "description": "Atualiza os dados de um prontuário existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do prontuário"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados do prontuário.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Prontuario"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Prontuário atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Prontuario"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Prontuário não encontrado."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Prontuário"
+        ],
+        "description": "Exclui um prontuário pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do prontuário"
           },
           {
             "name": "authorization",
@@ -1128,20 +1550,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Prontuário deletado com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Prontuário não encontrado."
           }
         }
       }
     },
     "/prontuario/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Prontuário"
+        ],
+        "description": "Retorna todos os prontuários cadastrados.",
         "parameters": [
           {
             "name": "authorization",
@@ -1151,7 +1576,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de prontuários.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Prontuario"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1159,17 +1593,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Prontuário"
+        ],
+        "description": "Cadastra um novo prontuário.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do novo prontuário.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Prontuario"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Prontuário criado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Prontuario"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1179,13 +1628,17 @@
     },
     "/cobranca/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Cobrança"
+        ],
+        "description": "Busca uma cobrança pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da cobrança"
           },
           {
             "name": "authorization",
@@ -1195,51 +1648,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Cobrança encontrada.",
+            "schema": {
+              "$ref": "#/definitions/Cobranca"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Cobrança não encontrada."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Cobrança"
+        ],
+        "description": "Atualiza os dados de uma cobrança existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da cobrança"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados da cobrança.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cobranca"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Cobrança atualizada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Cobranca"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Cobrança não encontrada."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Cobrança"
+        ],
+        "description": "Exclui uma cobrança pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da cobrança"
           },
           {
             "name": "authorization",
@@ -1249,20 +1725,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Cobrança deletada com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Cobrança não encontrada."
           }
         }
       }
     },
     "/cobranca/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Cobrança"
+        ],
+        "description": "Retorna todas as cobranças cadastradas.",
         "parameters": [
           {
             "name": "authorization",
@@ -1272,7 +1751,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de cobranças.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Cobranca"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1280,17 +1768,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Cobrança"
+        ],
+        "description": "Cadastra uma nova cobrança.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados da cobrança a ser criada.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cobranca"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Cobrança criada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Cobranca"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1300,13 +1803,17 @@
     },
     "/notificacao/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Notificação"
+        ],
+        "description": "Busca uma notificação pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da notificação"
           },
           {
             "name": "authorization",
@@ -1316,51 +1823,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Notificação encontrada.",
+            "schema": {
+              "$ref": "#/definitions/Notificacao"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Notificação não encontrada."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Notificação"
+        ],
+        "description": "Atualiza os dados de uma notificação existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da notificação"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados da notificação.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Notificacao"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Notificação atualizada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Notificacao"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Notificação não encontrada."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Notificação"
+        ],
+        "description": "Exclui uma notificação pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da notificação"
           },
           {
             "name": "authorization",
@@ -1370,20 +1900,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Notificação deletada com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Notificação não encontrada."
           }
         }
       }
     },
     "/notificacao/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Notificação"
+        ],
+        "description": "Retorna todas as notificações cadastradas.",
         "parameters": [
           {
             "name": "authorization",
@@ -1393,7 +1926,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de notificações.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Notificacao"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1401,17 +1943,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Notificação"
+        ],
+        "description": "Cadastra uma nova notificação.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados da nova notificação.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Notificacao"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Notificação criada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Notificacao"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1421,13 +1978,17 @@
     },
     "/receita/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Receitas"
+        ],
+        "description": "Busca uma receita pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da receita"
           },
           {
             "name": "authorization",
@@ -1437,51 +1998,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Receita encontrada.",
+            "schema": {
+              "$ref": "#/definitions/Receita"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Receita não encontrada."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Receitas"
+        ],
+        "description": "Atualiza os dados de uma receita existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da receita"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados da receita.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Receita"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Receita atualizada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Receita"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Receita não encontrada."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Receitas"
+        ],
+        "description": "Exclui uma receita pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID da receita"
           },
           {
             "name": "authorization",
@@ -1491,20 +2075,23 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Receita deletada com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Receita não encontrada."
           }
         }
       }
     },
     "/receita/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Receitas"
+        ],
+        "description": "Retorna todas as receitas cadastradas.",
         "parameters": [
           {
             "name": "authorization",
@@ -1514,7 +2101,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Lista de receitas.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Receita"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -1522,17 +2118,32 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Receitas"
+        ],
+        "description": "Cadastra uma nova receita.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados da nova receita.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Receita"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Receita criada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Receita"
+            }
           },
           "401": {
             "description": "Unauthorized"

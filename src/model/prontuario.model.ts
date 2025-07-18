@@ -28,7 +28,7 @@ export class Prontuario {
   @Column({ length: 80 })
   detalhes_clinicos: string;
 
-  @CreateDateColumn({ type: "datetime" })
+  @CreateDateColumn({ type: "timestamp" })
     criado_em: Date;
 }
 

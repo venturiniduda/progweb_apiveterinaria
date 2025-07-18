@@ -28,7 +28,7 @@ export class Estoque {
   @Column({ length: 20 })
   localizacao: string;
 
-  @CreateDateColumn({ type: "datetime" })
+  @CreateDateColumn({ type: "timestamp" })
   criado_em: Date;
 }
 

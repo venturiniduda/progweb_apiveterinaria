@@ -39,7 +39,7 @@ export class Consulta {
   @Column({ length: 20 })
   status: string;
 
-  @CreateDateColumn({ type: "datetime" })
+  @CreateDateColumn({ type: "timestamp" })
     criado_em: Date;
 
   @OneToMany(() => Prontuario, (prontuario) => prontuario.consulta)

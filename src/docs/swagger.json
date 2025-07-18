@@ -109,6 +109,9 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -478,13 +481,17 @@
     },
     "/veterinario/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Veterinário"
+        ],
+        "description": "Busca um veterinário pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do veterinário"
           },
           {
             "name": "authorization",
@@ -494,51 +501,74 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Veterinário encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Veterinario"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Veterinário não encontrado."
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Veterinário"
+        ],
+        "description": "Atualiza os dados de um veterinário existente.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do veterinário"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novos dados do veterinário.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Veterinario"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Veterinário atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Veterinario"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Veterinário não encontrado."
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Veterinário"
+        ],
+        "description": "Exclui um veterinário pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do veterinário"
           },
           {
             "name": "authorization",
@@ -548,51 +578,79 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Veterinário deletado com sucesso."
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Veterinário não encontrado."
           }
         }
       }
     },
     "/veterinario/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Veterinário"
+        ],
+        "description": "Busca um veterinário pelo ID.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do veterinário",
+            "required": true,
+            "type": "integer"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Veterinário encontrado.",
+            "schema": {
+              "$ref": "#/definitions/Veterinario"
+            }
           },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Veterinário não encontrado."
           }
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Veterinário"
+        ],
+        "description": "Cadastra um novo veterinário.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do veterinário a ser criado.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Veterinario"
+            }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Veterinário criado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Veterinario"
+            }
           },
           "401": {
             "description": "Unauthorized"

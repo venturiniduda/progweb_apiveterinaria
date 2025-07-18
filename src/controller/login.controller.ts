@@ -12,8 +12,8 @@ async function login(req: Request, res: Response) {
         return;
     }
 
-    const userRepostory = AppDataSource.getRepository(User);
-    const user = await userRepostory.findOne({ where: {username}});
+    const userRepository = AppDataSource.getRepository(User);
+    const user = await userRepository.findOne({ where: {username}});
 
     if(!user){
         res.status(401).json({message: "Usuário e/ou senha inválidos."});
@@ -25,6 +25,11 @@ async function login(req: Request, res: Response) {
 
     if (!isPasswordValid){
         res.status(401).json({message: "Usuário e/ou senha inválidos."});
+        return;
+    }
+
+    if (!process.env.JWT_KEY) {
+        res.status(500).json({ message: "Erro no servidor. Tente novamente mais tarde." });
         return;
     }
 

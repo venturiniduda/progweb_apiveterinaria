@@ -20,13 +20,11 @@ const config = {
     { name: 'Consulta', description: 'Consultas management endpoints' },
     { name: 'Estoque', description: 'Estoque management endpoints' },
     { name: 'Medicamento', description: 'Medicamento management endpoints' },
-    { name: 'Notificação', description: 'Notificação management endpoints' },
     { name: 'Paciente', description: 'Paciente management endpoints' },
     { name: 'Prontuário', description: 'Prontuário management endpoints' },
     { name: 'Receitas', description: 'Receita management endpoints' },
     { name: 'Tutor', description: 'Tutor management endpoints' },
     { name: 'Veterinário', description: 'Veterinário management endpoints' },
-    { name: 'Admins', description: 'Admin management endpoints' },
   ],
   securityDefinitions: {
     bearerAuth: {
@@ -52,14 +50,6 @@ const config = {
     User: {
       username: 'antonio',
       password: 'dhbshjkvhsfjvjsdkfhjvskdfjvskj',
-    },
-    Admin: {
-      admin_id: 1,
-      nome: 'Maria',
-      sobrenome: 'Silva',
-      cpf: '12345678900',
-      email: 'admin@vet.com',
-      senha: '123456',
     },
     Tutor: {
       nome: 'João',
@@ -119,12 +109,6 @@ const config = {
       consulta: 1,
       observacoes: 'Animal saudável',
       prescricao: 'Repouso e alimentação',
-    },
-    Notificacao: {
-      id: 1,
-      mensagem: 'Vacina agendada',
-      tipo: 'lembrete',
-      dataEnvio: '2025-07-15T10:00:00Z',
     },
     Veterinario: {
       vet_id: 1,

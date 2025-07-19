@@ -55,9 +55,6 @@ async function login(req: Request, res: Response, next: Function) {
         return;
     }
 
-    console.log("senha recebida", password);
-    console.log("senha bd", user.password);
-
     const isPasswordValid = await compare(password, user.password);
 
     if (!isPasswordValid){

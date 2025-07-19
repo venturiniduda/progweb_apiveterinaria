@@ -2,7 +2,7 @@ import Consulta from "../model/consulta.model";
 import ConsultaRepository from "../repositories/consulta.repository";
 import { Request, Response } from "express";
 
-async function getConsulta(req: Request, res: Response) {
+async function getConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Busca uma consulta pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getConsulta(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getConsultas(req: Request, res: Response) {
+async function getConsultas(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Retorna todas as consultas cadastradas.'
         #swagger.responses[200] = {
@@ -40,7 +40,7 @@ async function getConsultas(req: Request, res: Response) {
     res.status(200).json(consultas);
 }
 
-async function addConsulta(req: Request, res: Response) {
+async function addConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Cadastra uma nova consulta.'
         #swagger.parameters['body'] = {
@@ -59,7 +59,7 @@ async function addConsulta(req: Request, res: Response) {
     res.status(201).json(consulta);
 }
 
-async function updateConsulta(req: Request, res: Response) {
+async function updateConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Atualiza os dados de uma consulta existente.'
         #swagger.parameters['id'] = {
@@ -92,7 +92,7 @@ async function updateConsulta(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteConsulta(req: Request, res: Response) {
+async function deleteConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Exclui uma consulta pelo ID.'
         #swagger.parameters['id'] = {

@@ -2,7 +2,7 @@ import Medicamento from "../model/medicamento.model";
 import MedicamentoRepository from "../repositories/medicamento.repository";
 import { Request, Response } from "express";
 
-async function getMedicamento(req: Request, res: Response) {
+async function getMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Busca um medicamento pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getMedicamento(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getMedicamentos(req: Request, res: Response) {
+async function getMedicamentos(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Retorna todos os medicamentos cadastrados.'
         #swagger.responses[200] = {
@@ -41,7 +41,7 @@ async function getMedicamentos(req: Request, res: Response) {
     res.status(200).json(Medicamentos);
 }
 
-async function addMedicamento(req: Request, res: Response) {
+async function addMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Cadastra um novo medicamento.'
         #swagger.parameters['body'] = {
@@ -61,7 +61,7 @@ async function addMedicamento(req: Request, res: Response) {
     res.status(201).json(Medicamento);
 }
 
-async function updateMedicamento(req: Request, res: Response) {
+async function updateMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Atualiza os dados de um medicamento existente.'
         #swagger.parameters['id'] = {
@@ -95,7 +95,7 @@ async function updateMedicamento(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteMedicamento(req: Request, res: Response) {
+async function deleteMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Exclui um medicamento pelo ID.'
         #swagger.parameters['id'] = {

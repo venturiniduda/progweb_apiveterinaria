@@ -2,7 +2,7 @@ import Admin from "../model/admin.model";
 import AdminRepository from "../repositories/admin.repository";
 import { Request, Response } from "express";
 
-async function getAdmin(req: Request, res: Response) {
+async function getAdmin(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Admins']
         #swagger.description = 'Busca um administrador pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getAdmin(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getAdmins(_: Request, res: Response) {
+async function getAdmins(_: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Admins']
         #swagger.description = 'Retorna todos os administradores cadastrados.'
         #swagger.responses[200] = {
@@ -41,7 +41,7 @@ async function getAdmins(_: Request, res: Response) {
     res.status(200).json(Admins);
 }
 
-async function addAdmin(req: Request, res: Response) {
+async function addAdmin(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Admins']
         #swagger.description = 'Cadastra um novo administrador.'
         #swagger.parameters['body'] = {
@@ -61,7 +61,7 @@ async function addAdmin(req: Request, res: Response) {
     res.status(201).json(Admin);
 }
 
-async function updateAdmin(req: Request, res: Response) {
+async function updateAdmin(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Admins']
         #swagger.description = 'Atualiza os dados de um administrador existente.'
         #swagger.parameters['id'] = {
@@ -95,7 +95,7 @@ async function updateAdmin(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteAdmin(req: Request, res: Response) {
+async function deleteAdmin(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Admins']
         #swagger.description = 'Exclui um administrador pelo ID.'
         #swagger.parameters['id'] = {

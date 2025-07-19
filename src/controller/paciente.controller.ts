@@ -2,7 +2,7 @@ import Paciente from "../model/paciente.model";
 import PacienteRepository from "../repositories/paciente.repository";
 import { Request, Response } from "express";
 
-async function getPaciente(req: Request, res: Response) {
+async function getPaciente(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Paciente']
         #swagger.description = 'Busca um paciente pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getPaciente(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getPacientes(req: Request, res: Response) {
+async function getPacientes(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Paciente']
         #swagger.description = 'Retorna todos os pacientes cadastrados.'
         #swagger.responses[200] = {
@@ -41,7 +41,7 @@ async function getPacientes(req: Request, res: Response) {
     res.status(200).json(Pacientes);
 }
 
-async function addPaciente(req: Request, res: Response) {
+async function addPaciente(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Paciente']
         #swagger.description = 'Cadastra um novo paciente.'
         #swagger.parameters['body'] = {
@@ -61,7 +61,7 @@ async function addPaciente(req: Request, res: Response) {
     res.status(201).json(Paciente);
 }
 
-async function updatePaciente(req: Request, res: Response) {
+async function updatePaciente(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Paciente']
         #swagger.description = 'Atualiza os dados de um paciente existente.'
         #swagger.parameters['id'] = {
@@ -95,7 +95,7 @@ async function updatePaciente(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deletePaciente(req: Request, res: Response) {
+async function deletePaciente(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Paciente']
         #swagger.description = 'Exclui um paciente pelo ID.'
         #swagger.parameters['id'] = {

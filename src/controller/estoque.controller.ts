@@ -2,7 +2,7 @@ import Estoque from "../model/estoque.model";
 import EstoqueRepository from "../repositories/estoque.repository";
 import { Request, Response } from "express";
 
-async function getEstoque(req: Request, res: Response) {
+async function getEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Busca um estoque pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getEstoque(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getEstoques(req: Request, res: Response) {
+async function getEstoques(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Retorna todos os estoques cadastrados.'
         #swagger.responses[200] = {
@@ -41,7 +41,7 @@ async function getEstoques(req: Request, res: Response) {
     res.status(200).json(Estoques);
 }
 
-async function addEstoque(req: Request, res: Response) {
+async function addEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Cadastra um novo estoque.'
         #swagger.parameters['body'] = {
@@ -61,7 +61,7 @@ async function addEstoque(req: Request, res: Response) {
     res.status(201).json(Estoque);
 }
 
-async function updateEstoque(req: Request, res: Response) {
+async function updateEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Atualiza os dados de um estoque existente.'
         #swagger.parameters['id'] = {
@@ -95,7 +95,7 @@ async function updateEstoque(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteEstoque(req: Request, res: Response) {
+async function deleteEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Exclui um estoque pelo ID.'
         #swagger.parameters['id'] = {

@@ -2,7 +2,7 @@ import Veterinario from "../model/veterinario.model";
 import VeterinarioRepository from "../repositories/veterinario.repository";
 import { Request, Response } from "express";
 
-async function getVeterinario(req: Request, res: Response) {
+async function getVeterinario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Veterinário']
         #swagger.description = 'Busca um veterinário pelo ID.'
         #swagger.parameters['id'] = {
@@ -29,7 +29,7 @@ async function getVeterinario(req: Request, res: Response) {
 }
 
 
-async function getVeterinarios(req: Request, res: Response) {
+async function getVeterinarios(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Veterinário']
         #swagger.description = 'Retorna todos os veterinários cadastrados.'
         #swagger.responses[200] = {
@@ -62,7 +62,7 @@ async function addVeterinario(req: Request, res: Response) {
 }
 
 
-async function updateVeterinario(req: Request, res: Response) {
+async function updateVeterinario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Veterinário']
         #swagger.description = 'Atualiza os dados de um veterinário existente.'
         #swagger.parameters['id'] = {
@@ -96,7 +96,7 @@ async function updateVeterinario(req: Request, res: Response) {
 }
 
 
-async function deleteVeterinario(req: Request, res: Response) {
+async function deleteVeterinario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Veterinário']
         #swagger.description = 'Exclui um veterinário pelo ID.'
         #swagger.parameters['id'] = {

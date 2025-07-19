@@ -2,7 +2,7 @@ import Prontuario from "../model/prontuario.model";
 import ProntuarioRepository from "../repositories/prontuario.repository";
 import { Request, Response } from "express";
 
-async function getProntuario(req: Request, res: Response) {
+async function getProntuario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Prontuário']
         #swagger.description = 'Busca um prontuário pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getProntuario(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getProntuarios(req: Request, res: Response) {
+async function getProntuarios(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Prontuário']
         #swagger.description = 'Retorna todos os prontuários cadastrados.'
         #swagger.responses[200] = {
@@ -41,7 +41,7 @@ async function getProntuarios(req: Request, res: Response) {
     res.status(200).json(Prontuarios);
 }
 
-async function addProntuario(req: Request, res: Response) {
+async function addProntuario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Prontuário']
         #swagger.description = 'Cadastra um novo prontuário.'
         #swagger.parameters['body'] = {
@@ -61,7 +61,7 @@ async function addProntuario(req: Request, res: Response) {
     res.status(201).json(Prontuario);
 }
 
-async function updateProntuario(req: Request, res: Response) {
+async function updateProntuario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Prontuário']
         #swagger.description = 'Atualiza os dados de um prontuário existente.'
         #swagger.parameters['id'] = {
@@ -95,7 +95,7 @@ async function updateProntuario(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteProntuario(req: Request, res: Response) {
+async function deleteProntuario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Prontuário']
         #swagger.description = 'Exclui um prontuário pelo ID.'
         #swagger.parameters['id'] = {

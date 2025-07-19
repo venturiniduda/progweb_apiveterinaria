@@ -4,7 +4,7 @@ import { Usuarios } from "../model/user.model";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 
-async function login(req: Request, res: Response) {
+async function login(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Auth']
         #swagger.description = 'Realiza login do usuário e retorna um token JWT.'
         #swagger.parameters['body'] = {

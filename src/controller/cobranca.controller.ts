@@ -2,7 +2,7 @@ import Cobranca from "../model/cobranca.model";
 import CobrancaRepository from "../repositories/cobranca.repository";
 import { Request, Response } from "express";
 
-async function getCobranca(req: Request, res: Response) {
+async function getCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Busca uma cobrança pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getCobranca(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getCobrancas(req: Request, res: Response) {
+async function getCobrancas(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Retorna todas as cobranças cadastradas.'
         #swagger.responses[200] = {
@@ -40,7 +40,7 @@ async function getCobrancas(req: Request, res: Response) {
     res.status(200).json(cobrancas);
 }
 
-async function addCobranca(req: Request, res: Response) {
+async function addCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Cadastra uma nova cobrança.'
         #swagger.parameters['body'] = {
@@ -59,7 +59,7 @@ async function addCobranca(req: Request, res: Response) {
     res.status(201).json(cobranca);
 }
 
-async function updateCobranca(req: Request, res: Response) {
+async function updateCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Atualiza os dados de uma cobrança existente.'
         #swagger.parameters['id'] = {
@@ -92,7 +92,7 @@ async function updateCobranca(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteCobranca(req: Request, res: Response) {
+async function deleteCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Exclui uma cobrança pelo ID.'
         #swagger.parameters['id'] = {

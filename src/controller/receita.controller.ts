@@ -2,7 +2,7 @@ import Receita from "../model/receita.model";
 import ReceitaRepository from "../repositories/receita.repository";
 import { Request, Response } from "express";
 
-async function getReceita(req: Request, res: Response) {
+async function getReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Busca uma receita pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getReceita(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getReceitas(_: Request, res: Response) {
+async function getReceitas(_: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Retorna todas as receitas cadastradas.'
         #swagger.responses[200] = {
@@ -40,7 +40,7 @@ async function getReceitas(_: Request, res: Response) {
     res.status(200).json(receitas);
 }
 
-async function addReceita(req: Request, res: Response) {
+async function addReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Cadastra uma nova receita.'
         #swagger.parameters['body'] = {
@@ -60,7 +60,7 @@ async function addReceita(req: Request, res: Response) {
     res.status(201).json(receita);
 }
 
-async function updateReceita(req: Request, res: Response) {
+async function updateReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Atualiza os dados de uma receita existente.'
         #swagger.parameters['id'] = {
@@ -94,7 +94,7 @@ async function updateReceita(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteReceita(req: Request, res: Response) {
+async function deleteReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Exclui uma receita pelo ID.'
         #swagger.parameters['id'] = {

@@ -2,7 +2,7 @@ import Notificacao from "../model/notificacao.model";
 import NotificacaoRepository from "../repositories/notificacao.repository";
 import { Request, Response } from "express";
 
-async function getNotificacao(req: Request, res: Response) {
+async function getNotificacao(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Notificação']
         #swagger.description = 'Busca uma notificação pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getNotificacao(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getNotificacoes(_: Request, res: Response) {
+async function getNotificacoes(_: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Notificação']
         #swagger.description = 'Retorna todas as notificações cadastradas.'
         #swagger.responses[200] = {
@@ -40,7 +40,7 @@ async function getNotificacoes(_: Request, res: Response) {
     res.status(200).json(notificacoes);
 }
 
-async function addNotificacao(req: Request, res: Response) {
+async function addNotificacao(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Notificação']
         #swagger.description = 'Cadastra uma nova notificação.'
         #swagger.parameters['body'] = {
@@ -60,7 +60,7 @@ async function addNotificacao(req: Request, res: Response) {
     res.status(201).json(nova);
 }
 
-async function updateNotificacao(req: Request, res: Response) {
+async function updateNotificacao(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Notificação']
         #swagger.description = 'Atualiza os dados de uma notificação existente.'
         #swagger.parameters['id'] = {
@@ -94,7 +94,7 @@ async function updateNotificacao(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteNotificacao(req: Request, res: Response) {
+async function deleteNotificacao(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Notificação']
         #swagger.description = 'Exclui uma notificação pelo ID.'
         #swagger.parameters['id'] = {

@@ -2,7 +2,7 @@ import Tutor from "../model/tutor.model";
 import TutorRepository from "../repositories/tutor.repository";
 import { Request, Response } from "express";
 
-async function getTutor(req: Request, res: Response) {
+async function getTutor(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Tutor']
         #swagger.description = 'Busca um tutor pelo ID.'
         #swagger.parameters['id'] = {
@@ -28,7 +28,7 @@ async function getTutor(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function getTutores(req: Request, res: Response) {
+async function getTutores(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Tutor']
         #swagger.description = 'Retorna todos os tutores cadastrados.'
         #swagger.responses[200] = {
@@ -40,7 +40,7 @@ async function getTutores(req: Request, res: Response) {
     res.status(200).json(tutores);
 }
 
-async function addTutor(req: Request, res: Response) {
+async function addTutor(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Tutor']
         #swagger.description = 'Cadastra um novo tutor.'
         #swagger.parameters['body'] = {
@@ -59,7 +59,7 @@ async function addTutor(req: Request, res: Response) {
     res.status(201).json(tutor);
 }
 
-async function updateTutor(req: Request, res: Response) {
+async function updateTutor(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Tutor']
         #swagger.description = 'Atualiza os dados de um tutor existente.'
         #swagger.parameters['id'] = {
@@ -92,7 +92,7 @@ async function updateTutor(req: Request, res: Response) {
         res.sendStatus(404);
 }
 
-async function deleteTutor(req: Request, res: Response) {
+async function deleteTutor(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Tutor']
         #swagger.description = 'Exclui um tutor pelo ID.'
         #swagger.parameters['id'] = {

@@ -20,6 +20,7 @@ async function addUser(req: Request, res: Response) {
     const user = await userRepostory.addUser(username,password);
 
     res.status(201).json(user);
+    console.log(`User created: ${user.username}`);
 }
 
 export default {

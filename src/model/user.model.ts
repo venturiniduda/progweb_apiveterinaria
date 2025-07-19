@@ -3,7 +3,7 @@ import { hash } from "bcrypt";
 import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from "typeorm";
 
 @Entity()
-export class User{
+export class Usuarios{
 
     @PrimaryGeneratedColumn()
     id: number;

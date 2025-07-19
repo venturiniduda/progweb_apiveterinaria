@@ -23,9 +23,9 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/api", router);
 
-app.use((req, res: Response) => {
-    res.send("Hello me, it's me again...");
-});
+// app.use((req, res: Response) => {
+//     res.send("Hello me, it's me again...");
+// });
 
 const PORT = process.env.PORT || 12345
 

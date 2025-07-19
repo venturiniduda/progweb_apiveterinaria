@@ -17,17 +17,17 @@ import loginRouter from './login.router';
 const router = express.Router();
 
 router.use('/login', loginRouter);
+router.use("/users", UserRouter);
 router.use("/paciente", jwtAuthMiddleware, PacienteRouter);
 router.use("/tutor", jwtAuthMiddleware, TutorRouter);
 router.use("/admin", jwtAuthMiddleware, AdminRouter);
 router.use("/veterinario", jwtAuthMiddleware, VeterinarioRouter);
 router.use("/medicamento", jwtAuthMiddleware, MedicamentoRouter);
 router.use("/estoque", jwtAuthMiddleware, EstoqueRouter);
-router.use("/users", UserRouter);
-router.use("/consulta", ConsultaRouter);
-router.use("/prontuario", ProntuarioRouter);
-router.use("/cobranca", CobrancaRouter);
-router.use("/notificacao", NotificacaoRouter);
-router.use("/receita", ReceitaRouter);
+router.use("/consulta", jwtAuthMiddleware, ConsultaRouter);
+router.use("/prontuario", jwtAuthMiddleware, ProntuarioRouter);
+router.use("/cobranca", jwtAuthMiddleware, CobrancaRouter);
+router.use("/notificacao", jwtAuthMiddleware, NotificacaoRouter);
+router.use("/receita", jwtAuthMiddleware, ReceitaRouter);
 
 export default router;

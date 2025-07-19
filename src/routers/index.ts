@@ -12,19 +12,18 @@ import CobrancaRouter from "./cobranca.router"
 import NotificacaoRouter from "./notificacao.router"
 import ReceitaRouter from "./receita.router"
 import { jwtAuthMiddleware } from "../middlewares/auth.middleware";
-import loginController from "../controller/login.controller";
+import loginRouter from './login.router';
 
 const router = express.Router();
 
-router.post('/login', loginController.login);
-
+router.use('/login', loginRouter);
 router.use("/paciente", jwtAuthMiddleware, PacienteRouter);
 router.use("/tutor", jwtAuthMiddleware, TutorRouter);
 router.use("/admin", jwtAuthMiddleware, AdminRouter);
 router.use("/veterinario", jwtAuthMiddleware, VeterinarioRouter);
 router.use("/medicamento", jwtAuthMiddleware, MedicamentoRouter);
 router.use("/estoque", jwtAuthMiddleware, EstoqueRouter);
-router.post("/users", UserRouter);
+router.use("/users", UserRouter);
 router.use("/consulta", ConsultaRouter);
 router.use("/prontuario", ProntuarioRouter);
 router.use("/cobranca", CobrancaRouter);

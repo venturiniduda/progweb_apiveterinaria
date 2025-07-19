@@ -1,7 +1,7 @@
-import { Request,Response } from "express";
+import { Request,Response, NextFunction } from "express";
 import userRepostory from "../repositories/user.repository";
 
-async function addUser(req: Request, res: Response) {
+async function addUser(req: Request, res: Response, next: NextFunction) {
     /* #swagger.tags = ['Users']
        #swagger.description = 'Creates a new user.'
        #swagger.parameters['body'] = {
@@ -15,12 +15,10 @@ async function addUser(req: Request, res: Response) {
             schema: { $ref: "#/definitions/User" }
        }
     */
-    
     const { username, password } = req.body;
     const user = await userRepostory.addUser(username,password);
 
     res.status(201).json(user);
-    console.log(`User created: ${user.username}`);
 }
 
 export default {

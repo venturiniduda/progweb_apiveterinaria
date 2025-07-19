@@ -37,7 +37,7 @@ const config = {
     },
   },
   definitions: {
-    AddUser: {
+    addUser: {
       username: 'testuser',
       password: 'password123',
     },
@@ -81,7 +81,6 @@ const config = {
       raca: 'Labrador',
       cor_pelagem: 'Caramelo',
       data_nascimento: '2020-01-01',
-      animal_id: '9',
     },
     Consulta: {
       consulta_id: 1,

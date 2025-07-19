@@ -14,17 +14,17 @@ async function login(req: Request, res: Response, next: Function) {
             schema: { $ref: "#/definitions/Login" }
         },
         #swagger.responses[200] = {
-            description: 'Login realizado com sucesso.',
+            description: 'Login realizado com sucesso!',
             schema: { $ref: "#/definitions/LoginResponse" }
         }
         #swagger.responses[400] = {
-            description: 'Usuário e/ou senha não informados.'
+            description: 'Usuário e/ou senha obrigatórios!'
         }
         #swagger.responses[401] = {
             description: 'Usuário e/ou senha inválidos.'
         }
         #swagger.responses[500] = {
-            description: 'Erro interno no servidor.'
+            description: 'Erro no servidor. Tente novamente mais tarde.'
         }
     */
     const { username, password } = req.body;

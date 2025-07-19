@@ -1259,7 +1259,7 @@
             "description": "User data to create.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/addUser"
+              "$ref": "#/definitions/AddUser"
             }
           }
         ],
@@ -2153,7 +2153,7 @@
     }
   },
   "definitions": {
-    "addUser": {
+    "AddUser": {
       "type": "object",
       "properties": {
         "username": {

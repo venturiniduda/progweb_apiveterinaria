@@ -1,4 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const config = {
   info: {
@@ -35,7 +37,7 @@ const config = {
     },
   },
   definitions: {
-    addUser: {
+    AddUser: {
       $username: 'testuser',
       $password: 'password123',
     },

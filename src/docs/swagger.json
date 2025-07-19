@@ -80,7 +80,7 @@
     "application/json"
   ],
   "paths": {
-    "/login": {
+    "/login/": {
       "post": {
         "tags": [
           "Auth"
@@ -183,6 +183,33 @@
           },
           "500": {
             "description": "Erro interno no servidor."
+          }
+        }
+      }
+    },
+    "/users/": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Creates a new user.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User data to create.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addUser"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created successfully.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         }
       }
@@ -1233,41 +1260,6 @@
             "description": "Estoque criado com sucesso.",
             "schema": {
               "$ref": "#/definitions/Estoque"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/users/": {
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "description": "Creates a new user.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "User data to create.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/AddUser"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "User created successfully.",
-            "schema": {
-              "$ref": "#/definitions/User"
             }
           },
           "401": {

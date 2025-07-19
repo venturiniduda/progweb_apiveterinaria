@@ -13,6 +13,7 @@ async function getPacientes() : Promise<paciente[]> {
 
 async function addPaciente(data: paciente) : Promise<paciente> {
     const paciente = repository.create({
+        tutor_id: data.tutor_id,
         nome: data.nome,
         sexo: data.sexo,
         raca: data.raca,
@@ -28,6 +29,7 @@ async function updatePaciente(id: number, data: paciente) : Promise<paciente | n
     const paciente = await getPaciente(id);
 
     if (paciente !== null){
+        paciente.tutor_id = data.tutor_id;
         paciente.nome = data.nome;
         paciente.sexo = data.sexo;
         paciente.raca = data.raca;

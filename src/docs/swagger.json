@@ -21,7 +21,7 @@
       "description": "Cobranças management endpoints"
     },
     {
-      "name": "Consultas",
+      "name": "Consulta",
       "description": "Consultas management endpoints"
     },
     {
@@ -45,7 +45,7 @@
       "description": "Prontuário management endpoints"
     },
     {
-      "name": "Receita",
+      "name": "Receitas",
       "description": "Receita management endpoints"
     },
     {
@@ -57,7 +57,7 @@
       "description": "Veterinário management endpoints"
     },
     {
-      "name": "Admin",
+      "name": "Admins",
       "description": "Admin management endpoints"
     }
   ],

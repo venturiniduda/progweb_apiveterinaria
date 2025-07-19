@@ -24,7 +24,7 @@ router.use("/admin", jwtAuthMiddleware, AdminRouter);
 router.use("/veterinario", jwtAuthMiddleware, VeterinarioRouter);
 router.use("/medicamento", jwtAuthMiddleware, MedicamentoRouter);
 router.use("/estoque", jwtAuthMiddleware, EstoqueRouter);
-router.use("/users", UserRouter);
+router.post("/users", UserRouter);
 router.use("/consulta", ConsultaRouter);
 router.use("/prontuario", ProntuarioRouter);
 router.use("/cobranca", CobrancaRouter);

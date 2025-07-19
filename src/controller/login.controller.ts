@@ -58,7 +58,8 @@ async function login(req: Request, res: Response, next: Function) {
     const isPasswordValid = await compare(password, user.password);
 
     if (!isPasswordValid){
-        res.status(401).json({message: "Usuário e/ou senha inválidos."});
+        // res.status(401).json({message: "Usuário e/ou senha inválidos."});
+        res.status(401).json({message: "Senha inválidos."});
         return;
     }
 

@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Busca um medicamento pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do medicamento',
@@ -31,6 +32,7 @@ async function getMedicamento(req: Request, res: Response, next: Function) {
 async function getMedicamentos(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Retorna todos os medicamentos cadastrados.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.responses[200] = {
             description: 'Lista de medicamentos.',
             schema: [{ $ref: "#/definitions/Medicamento" }]
@@ -44,6 +46,7 @@ async function getMedicamentos(req: Request, res: Response, next: Function) {
 async function addMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Cadastra um novo medicamento.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['body'] = {
             in: 'body',
             description: 'Dados do novo medicamento.',
@@ -64,6 +67,7 @@ async function addMedicamento(req: Request, res: Response, next: Function) {
 async function updateMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Atualiza os dados de um medicamento existente.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do medicamento',
@@ -98,6 +102,7 @@ async function updateMedicamento(req: Request, res: Response, next: Function) {
 async function deleteMedicamento(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Medicamento']
         #swagger.description = 'Exclui um medicamento pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do medicamento',

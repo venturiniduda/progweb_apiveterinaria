@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getVeterinario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Veterinário']
         #swagger.description = 'Busca um veterinário pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do veterinário',

@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getProntuario(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Prontuário']
         #swagger.description = 'Busca um prontuário pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do prontuário',

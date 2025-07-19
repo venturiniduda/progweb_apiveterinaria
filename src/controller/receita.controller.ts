@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Busca uma receita pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da receita',
@@ -31,6 +32,7 @@ async function getReceita(req: Request, res: Response, next: Function) {
 async function getReceitas(_: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Retorna todas as receitas cadastradas.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.responses[200] = {
             description: 'Lista de receitas.',
             schema: [{ $ref: "#/definitions/Receita" }]
@@ -43,6 +45,7 @@ async function getReceitas(_: Request, res: Response, next: Function) {
 async function addReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Cadastra uma nova receita.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['body'] = {
             in: 'body',
             description: 'Dados da nova receita.',
@@ -63,6 +66,7 @@ async function addReceita(req: Request, res: Response, next: Function) {
 async function updateReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Atualiza os dados de uma receita existente.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da receita',
@@ -97,6 +101,7 @@ async function updateReceita(req: Request, res: Response, next: Function) {
 async function deleteReceita(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Receitas']
         #swagger.description = 'Exclui uma receita pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da receita',

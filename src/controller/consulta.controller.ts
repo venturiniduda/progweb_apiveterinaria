@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Busca uma consulta pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da consulta',
@@ -31,6 +32,7 @@ async function getConsulta(req: Request, res: Response, next: Function) {
 async function getConsultas(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Retorna todas as consultas cadastradas.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.responses[200] = {
             description: 'Lista de consultas.',
             schema: [{ $ref: "#/definitions/Consulta" }]
@@ -43,6 +45,7 @@ async function getConsultas(req: Request, res: Response, next: Function) {
 async function addConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Cadastra uma nova consulta.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['body'] = {
             in: 'body',
             description: 'Dados da nova consulta.',
@@ -62,6 +65,7 @@ async function addConsulta(req: Request, res: Response, next: Function) {
 async function updateConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Atualiza os dados de uma consulta existente.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da consulta',
@@ -95,6 +99,7 @@ async function updateConsulta(req: Request, res: Response, next: Function) {
 async function deleteConsulta(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Consulta']
         #swagger.description = 'Exclui uma consulta pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da consulta',

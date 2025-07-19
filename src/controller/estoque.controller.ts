@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Busca um estoque pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do estoque',
@@ -31,6 +32,7 @@ async function getEstoque(req: Request, res: Response, next: Function) {
 async function getEstoques(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Retorna todos os estoques cadastrados.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.responses[200] = {
             description: 'Lista de estoques.',
             schema: [{ $ref: "#/definitions/Estoque" }]
@@ -44,6 +46,7 @@ async function getEstoques(req: Request, res: Response, next: Function) {
 async function addEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Cadastra um novo estoque.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['body'] = {
             in: 'body',
             description: 'Dados do novo estoque.',
@@ -64,6 +67,7 @@ async function addEstoque(req: Request, res: Response, next: Function) {
 async function updateEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Atualiza os dados de um estoque existente.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do estoque',
@@ -98,6 +102,7 @@ async function updateEstoque(req: Request, res: Response, next: Function) {
 async function deleteEstoque(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Estoque']
         #swagger.description = 'Exclui um estoque pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do estoque',

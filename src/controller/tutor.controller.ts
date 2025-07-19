@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getTutor(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Tutor']
         #swagger.description = 'Busca um tutor pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID do tutor',

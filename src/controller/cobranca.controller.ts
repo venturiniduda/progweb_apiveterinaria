@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 async function getCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Busca uma cobrança pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da cobrança',
@@ -31,6 +32,7 @@ async function getCobranca(req: Request, res: Response, next: Function) {
 async function getCobrancas(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Retorna todas as cobranças cadastradas.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.responses[200] = {
             description: 'Lista de cobranças.',
             schema: [{ $ref: "#/definitions/Cobranca" }]
@@ -43,6 +45,7 @@ async function getCobrancas(req: Request, res: Response, next: Function) {
 async function addCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Cadastra uma nova cobrança.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['body'] = {
             in: 'body',
             description: 'Dados da cobrança a ser criada.',
@@ -62,6 +65,7 @@ async function addCobranca(req: Request, res: Response, next: Function) {
 async function updateCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Atualiza os dados de uma cobrança existente.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da cobrança',
@@ -95,6 +99,7 @@ async function updateCobranca(req: Request, res: Response, next: Function) {
 async function deleteCobranca(req: Request, res: Response, next: Function) {
     /*  #swagger.tags = ['Cobrança']
         #swagger.description = 'Exclui uma cobrança pelo ID.'
+        #swagger.security = [{ "bearerAuth": [] }]
         #swagger.parameters['id'] = {
             in: 'path',
             description: 'ID da cobrança',

@@ -37,7 +37,7 @@
 //       req = { params: { id: '1' } };
 //       (CobrancaRepository.getCobranca as jest.Mock).mockResolvedValue(cobrancaMock);
 
-//       await cobrancaController.getCobranca(req as Request, res as Response);
+//       await cobrancaController.getCobranca(req as Request, res as Response, next);
 
 //       expect(CobrancaRepository.getCobranca).toHaveBeenCalledWith(1);
 //       expect(statusMock).toHaveBeenCalledWith(200);
@@ -48,7 +48,7 @@
 //       req = { params: { id: '1' } };
 //       (CobrancaRepository.getCobranca as jest.Mock).mockResolvedValue(null);
 
-//       await cobrancaController.getCobranca(req as Request, res as Response);
+//       await cobrancaController.getCobranca(req as Request, res as Response, next);
 
 //       expect(res.sendStatus).toHaveBeenCalledWith(404);
 //     });

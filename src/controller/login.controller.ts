@@ -5,30 +5,17 @@ import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 
 async function login(req: Request, res: Response, next: Function) {
-    /*  #swagger.tags = ['Auth']
+    /*  #swagger.tags = ['Login']
         #swagger.description = 'Realiza login do usuário e retorna um token JWT.'
         #swagger.parameters['body'] = {
             in: 'body',
             description: 'Credenciais de login.',
             required: true,
-            schema: {
-                type: 'object',
-                properties: {
-                    username: { type: 'string' },
-                    password: { type: 'string' }
-                },
-                required: ['username', 'password']
-            }
-        }
+            schema: { $ref: "#/definitions/Login" }
+        },
         #swagger.responses[200] = {
             description: 'Login realizado com sucesso.',
-            schema: {
-                type: 'object',
-                properties: {
-                    message: { type: 'string' },
-                    token: { type: 'string' }
-                }
-            }
+            schema: { $ref: "#/definitions/LoginResponse" }
         }
         #swagger.responses[400] = {
             description: 'Usuário e/ou senha não informados.'
@@ -58,8 +45,7 @@ async function login(req: Request, res: Response, next: Function) {
     const isPasswordValid = await compare(password, user.password);
 
     if (!isPasswordValid){
-        // res.status(401).json({message: "Usuário e/ou senha inválidos."});
-        res.status(401).json({message: "Senha inválidos."});
+        res.status(401).json({message: "Usuário e/ou senha inválidos."});
         return;
     }
 
@@ -71,7 +57,7 @@ async function login(req: Request, res: Response, next: Function) {
     const tokenJWT = jwt.sign(
         { userID: user.id, userName: user.username },
         String(process.env.JWT_KEY),
-        { expiresIn: '1h' }
+        { expiresIn: '2h' }
     );
 
     res.status(200).json({ message: "Login realizado com sucesso!", token: tokenJWT });

@@ -9,7 +9,7 @@
   "basePath": "/api/v1",
   "tags": [
     {
-      "name": "Auth",
+      "name": "Login",
       "description": "Authentication endpoints"
     },
     {
@@ -33,10 +33,6 @@
       "description": "Medicamento management endpoints"
     },
     {
-      "name": "Notificação",
-      "description": "Notificação management endpoints"
-    },
-    {
       "name": "Paciente",
       "description": "Paciente management endpoints"
     },
@@ -55,10 +51,6 @@
     {
       "name": "Veterinário",
       "description": "Veterinário management endpoints"
-    },
-    {
-      "name": "Admins",
-      "description": "Admin management endpoints"
     }
   ],
   "schemes": [
@@ -82,7 +74,7 @@
     "/login/": {
       "post": {
         "tags": [
-          "Auth"
+          "Login"
         ],
         "description": "Realiza login do usuário e retorna um token JWT.",
         "parameters": [
@@ -92,46 +84,7 @@
             "description": "Credenciais de login.",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "object"
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "username": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "password": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "required": {
-                  "type": "array",
-                  "example": [
-                    "username",
-                    "password"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
+              "$ref": "#/definitions/Login"
             }
           }
         ],
@@ -139,39 +92,7 @@
           "200": {
             "description": "Login realizado com sucesso.",
             "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "object"
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "token": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
+              "$ref": "#/definitions/LoginResponse"
             }
           },
           "400": {
@@ -555,181 +476,6 @@
             "description": "Tutor criado com sucesso.",
             "schema": {
               "$ref": "#/definitions/Tutor"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/admin/{id}": {
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "description": "Busca um administrador pelo ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "ID do administrador"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Administrador encontrado.",
-            "schema": {
-              "$ref": "#/definitions/Admin"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Administrador não encontrado."
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Admins"
-        ],
-        "description": "Atualiza os dados de um administrador existente.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "ID do administrador"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Novos dados do administrador.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Admin"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Administrador atualizado com sucesso.",
-            "schema": {
-              "$ref": "#/definitions/Admin"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Administrador não encontrado."
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Admins"
-        ],
-        "description": "Exclui um administrador pelo ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "ID do administrador"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Administrador deletado com sucesso."
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Administrador não encontrado."
-          }
-        }
-      }
-    },
-    "/admin/": {
-      "get": {
-        "tags": [
-          "Admins"
-        ],
-        "description": "Retorna todos os administradores cadastrados.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Lista de administradores.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Admin"
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Admins"
-        ],
-        "description": "Cadastra um novo administrador.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Dados do novo administrador.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Admin"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Administrador criado com sucesso.",
-            "schema": {
-              "$ref": "#/definitions/Admin"
             }
           },
           "401": {
@@ -1792,181 +1538,6 @@
         }
       }
     },
-    "/notificacao/{id}": {
-      "get": {
-        "tags": [
-          "Notificação"
-        ],
-        "description": "Busca uma notificação pelo ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "ID da notificação"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Notificação encontrada.",
-            "schema": {
-              "$ref": "#/definitions/Notificacao"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Notificação não encontrada."
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Notificação"
-        ],
-        "description": "Atualiza os dados de uma notificação existente.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "ID da notificação"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Novos dados da notificação.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Notificacao"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Notificação atualizada com sucesso.",
-            "schema": {
-              "$ref": "#/definitions/Notificacao"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Notificação não encontrada."
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Notificação"
-        ],
-        "description": "Exclui uma notificação pelo ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "ID da notificação"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Notificação deletada com sucesso."
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Notificação não encontrada."
-          }
-        }
-      }
-    },
-    "/notificacao/": {
-      "get": {
-        "tags": [
-          "Notificação"
-        ],
-        "description": "Retorna todas as notificações cadastradas.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Lista de notificações.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Notificacao"
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Notificação"
-        ],
-        "description": "Cadastra uma nova notificação.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Dados da nova notificação.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Notificacao"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notificação criada com sucesso.",
-            "schema": {
-              "$ref": "#/definitions/Notificacao"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
     "/receita/{id}": {
       "get": {
         "tags": [
@@ -2175,7 +1746,7 @@
       "properties": {
         "message": {
           "type": "string",
-          "example": "Login bem sucedido!"
+          "example": "Login realizado com sucesso!"
         },
         "token": {
           "type": "string",
@@ -2186,6 +1757,10 @@
     "User": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
         "username": {
           "type": "string",
           "example": "antonio"
@@ -2193,35 +1768,6 @@
         "password": {
           "type": "string",
           "example": "dhbshjkvhsfjvjsdkfhjvskdfjvskj"
-        }
-      }
-    },
-    "Admin": {
-      "type": "object",
-      "properties": {
-        "admin_id": {
-          "type": "number",
-          "example": 1
-        },
-        "nome": {
-          "type": "string",
-          "example": "Maria"
-        },
-        "sobrenome": {
-          "type": "string",
-          "example": "Silva"
-        },
-        "cpf": {
-          "type": "string",
-          "example": "12345678900"
-        },
-        "email": {
-          "type": "string",
-          "example": "admin@vet.com"
-        },
-        "senha": {
-          "type": "string",
-          "example": "123456"
         }
       }
     },
@@ -2440,27 +1986,6 @@
         "prescricao": {
           "type": "string",
           "example": "Repouso e alimentação"
-        }
-      }
-    },
-    "Notificacao": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "number",
-          "example": 1
-        },
-        "mensagem": {
-          "type": "string",
-          "example": "Vacina agendada"
-        },
-        "tipo": {
-          "type": "string",
-          "example": "lembrete"
-        },
-        "dataEnvio": {
-          "type": "string",
-          "example": "2025-07-15T10:00:00Z"
         }
       }
     },

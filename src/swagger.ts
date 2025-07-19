@@ -14,7 +14,7 @@ const config = {
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [
-    { name: 'Auth', description: 'Authentication endpoints' },
+    { name: 'Login', description: 'Authentication endpoints' },
     { name: 'Users', description: 'User management endpoints' },
     { name: 'Cobrança', description: 'Cobranças management endpoints' },
     { name: 'Consulta', description: 'Consultas management endpoints' },
@@ -44,10 +44,11 @@ const config = {
       password: 'password123',
     },
     LoginResponse: {
-      message: 'Login bem sucedido!',
+      message: 'Login realizado com sucesso!',
       token: 'dhsjgskjfgsdjhfsifuweifgsjjsldsçfdfbçcdsjcsjksçckjsdckjsç',
     },
     User: {
+      id: '1',
       username: 'antonio',
       password: 'dhbshjkvhsfjvjsdkfhjvskdfjvskj',
     },

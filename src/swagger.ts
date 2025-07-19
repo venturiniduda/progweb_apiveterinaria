@@ -6,11 +6,11 @@ const config = {
   info: {
     title: 'API Clínica Veterinária',
     version: '1.0.0',
-    description: 'Documentação interativa da API da Clínica Veterinária',
+    description: 'Documentação interativa da API da Clínica Veterinária, feito por Gabriela Veiga Camolezi, Maria Eduarda Venturini Wollmann e Vinicius Gabriel Xavier',
   },
   host: `progweb-apiveterinaria.onrender.com`,
   basePath: '/api/v1',
-  schemes: ['http', 'https'],
+  schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [

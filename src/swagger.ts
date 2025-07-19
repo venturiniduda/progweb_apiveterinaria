@@ -8,7 +8,7 @@ const config = {
     version: '1.0.0',
     description: 'Documentação interativa da API da Clínica Veterinária',
   },
-  host: `localhost:${process.env.PORT || 3000}`,
+  host: `progweb-apiveterinaria.onrender.com`,
   basePath: '/api/v1',
   schemes: ['http', 'https'],
   consumes: ['application/json'],

@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "Documentação interativa da API da Clínica Veterinária"
   },
-  "host": "localhost:3000",
+  "host": "progweb-apiveterinaria.onrender.com",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -192,12 +192,12 @@
         "tags": [
           "Users"
         ],
-        "description": "Cria um novo usuário.",
+        "description": "Creates a new user.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
-            "description": "Cria um novo usuário.",
+            "description": "User data to create.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/addUser"
@@ -2145,7 +2145,7 @@
     }
   },
   "definitions": {
-    "addUser": {
+    "AddUser": {
       "type": "object",
       "properties": {
         "username": {

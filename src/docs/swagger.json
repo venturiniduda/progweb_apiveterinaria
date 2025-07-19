@@ -192,12 +192,12 @@
         "tags": [
           "Users"
         ],
-        "description": "Creates a new user.",
+        "description": "Cria um novo usuário.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
-            "description": "User data to create.",
+            "description": "Cria um novo usuário.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/addUser"
@@ -2156,11 +2156,7 @@
           "type": "string",
           "example": "password123"
         }
-      },
-      "required": [
-        "username",
-        "password"
-      ]
+      }
     },
     "Login": {
       "type": "object",
@@ -2173,11 +2169,7 @@
           "type": "string",
           "example": "password123"
         }
-      },
-      "required": [
-        "username",
-        "password"
-      ]
+      }
     },
     "LoginResponse": {
       "type": "object",
@@ -2195,10 +2187,6 @@
     "User": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "number",
-          "example": 1
-        },
         "username": {
           "type": "string",
           "example": "antonio"
@@ -2241,10 +2229,6 @@
     "Tutor": {
       "type": "object",
       "properties": {
-        "tutor_id": {
-          "type": "number",
-          "example": 1
-        },
         "nome": {
           "type": "string",
           "example": "João"
@@ -2253,46 +2237,74 @@
           "type": "string",
           "example": "Silva"
         },
-        "telefone": {
+        "cpf": {
           "type": "string",
-          "example": "11999999999"
+          "example": "12345678900"
+        },
+        "data_nascimento": {
+          "type": "string",
+          "example": "2000-05-01"
+        },
+        "rua": {
+          "type": "string",
+          "example": "rua teste"
+        },
+        "numero": {
+          "type": "string",
+          "example": "801"
+        },
+        "bairro": {
+          "type": "string",
+          "example": "bairro teste"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "city"
+        },
+        "complemento": {
+          "type": "string",
+          "example": "null"
         },
         "email": {
           "type": "string",
           "example": "joao@email.com"
         },
-        "cpf": {
+        "telefone": {
           "type": "string",
-          "example": "12345678900"
+          "example": "11999999999"
         }
       }
     },
     "Paciente": {
       "type": "object",
       "properties": {
-        "animal_id": {
-          "type": "number",
-          "example": 1
+        "tutor_id": {
+          "type": "string",
+          "example": "6"
         },
         "nome": {
           "type": "string",
           "example": "Rex"
         },
-        "especie": {
+        "sexo": {
           "type": "string",
-          "example": "Cachorro"
+          "example": "M"
         },
         "raca": {
           "type": "string",
           "example": "Labrador"
         },
+        "cor_pelagem": {
+          "type": "string",
+          "example": "Caramelo"
+        },
         "data_nascimento": {
           "type": "string",
           "example": "2020-01-01"
         },
-        "tutor": {
-          "type": "number",
-          "example": 1
+        "animal_id": {
+          "type": "string",
+          "example": "9"
         }
       }
     },
@@ -2339,10 +2351,6 @@
         "valor": {
           "type": "number",
           "example": 120.5
-        },
-        "createdAt": {
-          "type": "string",
-          "example": "2025-07-17T10:00:00Z"
         }
       }
     },
@@ -2416,10 +2424,6 @@
         "status": {
           "type": "string",
           "example": "pago"
-        },
-        "createdAt": {
-          "type": "string",
-          "example": "2025-07-17T10:00:00Z"
         }
       }
     },
@@ -2491,10 +2495,6 @@
         "email": {
           "type": "string",
           "example": "ana.vet@clinicavet.com"
-        },
-        "criado_em": {
-          "type": "string",
-          "example": "2025-07-17T10:00:00Z"
         },
         "consultas": {
           "type": "array",

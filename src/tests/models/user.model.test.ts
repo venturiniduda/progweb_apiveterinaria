@@ -1,9 +1,9 @@
-import { User } from '../../model/user.model';
+import { Usuarios } from '../../model/user.model';
 import { compare } from 'bcrypt';
 
 describe('User model', () => {
   it('deve fazer hash da senha ao chamar hasPassword()', async () => {
-    const user = new User();
+    const user = new Usuarios();
     user.username = 'teste';
     user.password = 'senha123';
 
@@ -18,10 +18,10 @@ describe('User model', () => {
   });
 
   it('deve gerar um hash diferente para senhas iguais em execuções diferentes', async () => {
-    const user1 = new User();
+    const user1 = new Usuarios();
     user1.password = 'abc123';
 
-    const user2 = new User();
+    const user2 = new Usuarios();
     user2.password = 'abc123';
 
     await user1.hasPassword();

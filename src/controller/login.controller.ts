@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
-import { User } from "../model/user.model";
+import { Usuarios } from "../model/user.model";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -47,7 +47,7 @@ async function login(req: Request, res: Response) {
         return;
     }
 
-    const userRepository = AppDataSource.getRepository(User);
+    const userRepository = AppDataSource.getRepository(Usuarios);
     const user = await userRepository.findOne({ where: { username } });
 
     if (!user){
